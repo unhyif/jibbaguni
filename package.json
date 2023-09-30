@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "migrate": "dotenv -e .env.development -- prisma migrate dev",
+    "migrate-prod": "dotenv -e .env.production -- prisma migrate dev"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -17,6 +19,8 @@
   },
   "dependencies": {
     "@prisma/client": "^5.3.1",
+    "@supabase/supabase-js": "^2.37.0",
+    "dotenv-cli": "^7.3.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
