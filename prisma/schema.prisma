@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email String @unique
+  password String
+  isAuthenticated Boolean @default(false)
+  visitLogs VisitLog[]
+}
+
+model VisitLog {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+  link String?
+  address Json?
+  images VisitLogImage[]
+  realEstate Json?
+  transactionType TransactionTypeEnum?
+  price Int?
+  monthly Int?
+  maintenanceCost Int?
+  supplyArea Float?
+  exclusiveArea Float?
+  direction DirectionEnum?
+  floor Int?
+  hasElevator Boolean?
+  canPark Boolean?
+  furnitures Furniture[]
+}
+
+model VisitLogImage {
+  id Int @id @default(autoincrement())
+  url String
+  visitLog VisitLog @relation(fields: [visitLogId], references: [id])
+  visitLogId Int
+}
+
+model Furniture {
+  id Int @id @default(autoincrement())
+  code FurnitureEnum
+  visitLogs VisitLog[]
+}
+
+enum TransactionTypeEnum {
+  MONTHLY_RENT
+  JEONSE
+  SALE
+}
+
+enum DirectionEnum {
+  EAST
+  WEST
+  SOUTH
+  NORTH
+}
+
+enum FurnitureEnum {
+  AIR_CONDITIONER
+  BED
+  CLOSET
+  DESK
+  FRIDGE
+  INDUCTION
+  MICROWAVE
+  SHOE_CLOSET
+  SINK
+  STOVE
+  TV
+  WASHING_MACHINE
+}
