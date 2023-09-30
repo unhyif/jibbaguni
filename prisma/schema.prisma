@@ -1,10 +1,13 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("NEXT_PUBLIC_SUPABASE_URL")
+  url = env("DB_URL")
+  directUrl = env("DB_DIRECT_URL")
+  schemas = ["public", "auth"]
 }
 
 model User {
@@ -14,6 +17,8 @@ model User {
   password String
   isAuthenticated Boolean @default(false)
   visitLogs VisitLog[]
+
+  @@schema("auth")
 }
 
 model VisitLog {
@@ -37,6 +42,8 @@ model VisitLog {
   hasElevator Boolean?
   canPark Boolean?
   furnitures Furniture[]
+
+  @@schema("public")
 }
 
 model VisitLogImage {
@@ -44,18 +51,24 @@ model VisitLogImage {
   url String
   visitLog VisitLog @relation(fields: [visitLogId], references: [id])
   visitLogId Int
+
+  @@schema("public")
 }
 
 model Furniture {
   id Int @id @default(autoincrement())
   code FurnitureEnum
   visitLogs VisitLog[]
+
+  @@schema("public")
 }
 
 enum TransactionTypeEnum {
   MONTHLY_RENT
   JEONSE
   SALE
+
+  @@schema("public")
 }
 
 enum DirectionEnum {
@@ -63,6 +76,8 @@ enum DirectionEnum {
   WEST
   SOUTH
   NORTH
+
+  @@schema("public")
 }
 
 enum FurnitureEnum {
@@ -78,4 +93,6 @@ enum FurnitureEnum {
   STOVE
   TV
   WASHING_MACHINE
+
+  @@schema("public")
 }

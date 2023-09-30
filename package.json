@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "husky install",
-    "migrate": "dotenv -e .env.development -- prisma migrate dev",
-    "migrate-prod": "dotenv -e .env.production -- prisma migrate dev"
+    "migrate": "prisma migrate dev",
+    "db-ts": "dotenv -e .env.development -- cross-var supabase gen types typescript --project-id %SUPABASE_PROJECT_ID% > src/types/database.d.ts"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@prisma/client": "^5.3.1",
+    "@supabase/auth-helpers-nextjs": "^0.8.1",
+    "@supabase/auth-helpers-react": "^0.4.2",
     "@supabase/supabase-js": "^2.37.0",
     "dotenv-cli": "^7.3.0",
     "next": "latest",
@@ -33,6 +35,7 @@
     "@types/styled-components": "^5.1.28",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
+    "cross-var": "^1.1.0",
     "eslint": "^8.0.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
@@ -42,6 +45,8 @@
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "prisma": "^5.3.1",
+    "studio": "^0.13.5",
+    "supabase": "^1.99.5",
     "typescript": "*"
   }
 }
