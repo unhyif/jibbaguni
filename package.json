@@ -9,7 +9,7 @@
     "lint": "next lint",
     "postinstall": "husky install",
     "migrate": "prisma migrate dev",
-    "db-ts": "dotenv -e .env.development -- cross-var supabase gen types typescript --project-id %SUPABASE_PROJECT_ID% > src/types/database.d.ts"
+    "db-ts": "dotenv -e .env.development -- cross-var supabase gen types typescript --project-id %NEXT_PUBLIC_SUPABASE_PROJECT_ID% > src/types/database.d.ts"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -29,7 +29,6 @@
     "styled-components": "^6.0.8"
   },
   "devDependencies": {
-    "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@types/styled-components": "^5.1.28",

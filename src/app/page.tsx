@@ -1,12 +1,9 @@
-'use client';
+import Buttons from '@components/main/Buttons';
 
-const Home = () => {
-  const handleClick = () => {};
-  return (
-    <main>
-      <button onClick={handleClick}>Sign up</button>
-    </main>
-  );
-};
+const Home = () => (
+  <main>
+    <Buttons />
+  </main>
+);
 
 export default Home;
