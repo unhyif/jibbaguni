@@ -9,7 +9,7 @@ datasource db {
 }
 
 model userProfile {
-  id        Int        @id @default(autoincrement())
+  id        String     @id @db.Uuid
   visitLogs visitLog[]
 }
 
@@ -17,7 +17,8 @@ model visitLog {
   id              Int                  @id @default(autoincrement())
   createdAt       DateTime             @default(now())
   updatedAt       DateTime             @updatedAt
-  userProfileId   Int
+  userProfile     userProfile          @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
+  userProfileId   String               @db.Uuid
   link            String?
   address         Json?
   realEstate      Json?
@@ -31,7 +32,6 @@ model visitLog {
   floor           Int?
   hasElevator     Boolean?
   canPark         Boolean?
-  userProfile     userProfile          @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
   images          visitLogImage[]
   furnitures      furniture[]          @relation("furnitureTovisitLog")
 }

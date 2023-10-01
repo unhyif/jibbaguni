@@ -1,14 +1,13 @@
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { Database } from '~/types/database';
+import { useClientSupabase } from '@hooks/useClientSupabase';
 import { routerPathnames } from '~/constants/url/routerPathnames';
 
 interface UseAuthProps {}
 
 export const useAuth = () => {
   const router = useRouter();
-  const supabase = createClientComponentClient<Database>();
+  const { supabase } = useClientSupabase();
 
   const signUp = async (email: string, password: string) => {
     await supabase.auth.signUp({
@@ -36,7 +35,9 @@ export const useAuth = () => {
 
   useEffect(() => {
     const getSession = async () => {
-      const { data: session } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       console.log(session);
     };
     getSession();

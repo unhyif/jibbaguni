@@ -9,7 +9,7 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      _FurnitureToVisitLog: {
+      _furnitureTovisitLog: {
         Row: {
           A: number;
           B: number;
@@ -24,15 +24,15 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: '_FurnitureToVisitLog_A_fkey';
+            foreignKeyName: '_furnitureTovisitLog_A_fkey';
             columns: ['A'];
-            referencedRelation: 'Furniture';
+            referencedRelation: 'furniture';
             referencedColumns: ['id'];
           },
           {
-            foreignKeyName: '_FurnitureToVisitLog_B_fkey';
+            foreignKeyName: '_furnitureTovisitLog_B_fkey';
             columns: ['B'];
-            referencedRelation: 'VisitLog';
+            referencedRelation: 'visitLog';
             referencedColumns: ['id'];
           },
         ];
@@ -70,27 +70,39 @@ export interface Database {
         };
         Relationships: [];
       };
-      Furniture: {
+      furniture: {
         Row: {
-          code: Database['public']['Enums']['FurnitureEnum'];
+          code: Database['public']['Enums']['furnitureEnum'];
           id: number;
         };
         Insert: {
-          code: Database['public']['Enums']['FurnitureEnum'];
+          code: Database['public']['Enums']['furnitureEnum'];
           id?: number;
         };
         Update: {
-          code?: Database['public']['Enums']['FurnitureEnum'];
+          code?: Database['public']['Enums']['furnitureEnum'];
           id?: number;
         };
         Relationships: [];
       };
-      VisitLog: {
+      userProfile: {
+        Row: {
+          id: string;
+        };
+        Insert: {
+          id: string;
+        };
+        Update: {
+          id?: string;
+        };
+        Relationships: [];
+      };
+      visitLog: {
         Row: {
           address: Json | null;
           canPark: boolean | null;
           createdAt: string;
-          direction: Database['public']['Enums']['DirectionEnum'] | null;
+          direction: Database['public']['Enums']['directionEnum'] | null;
           exclusiveArea: number | null;
           floor: number | null;
           hasElevator: boolean | null;
@@ -102,16 +114,16 @@ export interface Database {
           realEstate: Json | null;
           supplyArea: number | null;
           transactionType:
-            | Database['public']['Enums']['TransactionTypeEnum']
+            | Database['public']['Enums']['transactionTypeEnum']
             | null;
           updatedAt: string;
-          userId: number;
+          userProfileId: string;
         };
         Insert: {
           address?: Json | null;
           canPark?: boolean | null;
           createdAt?: string;
-          direction?: Database['public']['Enums']['DirectionEnum'] | null;
+          direction?: Database['public']['Enums']['directionEnum'] | null;
           exclusiveArea?: number | null;
           floor?: number | null;
           hasElevator?: boolean | null;
@@ -123,16 +135,16 @@ export interface Database {
           realEstate?: Json | null;
           supplyArea?: number | null;
           transactionType?:
-            | Database['public']['Enums']['TransactionTypeEnum']
+            | Database['public']['Enums']['transactionTypeEnum']
             | null;
           updatedAt: string;
-          userId: number;
+          userProfileId: string;
         };
         Update: {
           address?: Json | null;
           canPark?: boolean | null;
           createdAt?: string;
-          direction?: Database['public']['Enums']['DirectionEnum'] | null;
+          direction?: Database['public']['Enums']['directionEnum'] | null;
           exclusiveArea?: number | null;
           floor?: number | null;
           hasElevator?: boolean | null;
@@ -144,21 +156,21 @@ export interface Database {
           realEstate?: Json | null;
           supplyArea?: number | null;
           transactionType?:
-            | Database['public']['Enums']['TransactionTypeEnum']
+            | Database['public']['Enums']['transactionTypeEnum']
             | null;
           updatedAt?: string;
-          userId?: number;
+          userProfileId?: string;
         };
         Relationships: [
           {
-            foreignKeyName: 'VisitLog_userId_fkey';
-            columns: ['userId'];
-            referencedRelation: 'User';
+            foreignKeyName: 'visitLog_userProfileId_fkey';
+            columns: ['userProfileId'];
+            referencedRelation: 'userProfile';
             referencedColumns: ['id'];
           },
         ];
       };
-      VisitLogImage: {
+      visitLogImage: {
         Row: {
           id: number;
           url: string;
@@ -176,9 +188,9 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'VisitLogImage_visitLogId_fkey';
+            foreignKeyName: 'visitLogImage_visitLogId_fkey';
             columns: ['visitLogId'];
-            referencedRelation: 'VisitLog';
+            referencedRelation: 'visitLog';
             referencedColumns: ['id'];
           },
         ];
@@ -191,8 +203,8 @@ export interface Database {
       [_ in never]: never;
     };
     Enums: {
-      DirectionEnum: 'EAST' | 'WEST' | 'SOUTH' | 'NORTH';
-      FurnitureEnum:
+      directionEnum: 'EAST' | 'WEST' | 'SOUTH' | 'NORTH';
+      furnitureEnum:
         | 'AIR_CONDITIONER'
         | 'BED'
         | 'CLOSET'
@@ -205,7 +217,7 @@ export interface Database {
         | 'STOVE'
         | 'TV'
         | 'WASHING_MACHINE';
-      TransactionTypeEnum: 'MONTHLY_RENT' | 'JEONSE' | 'SALE';
+      transactionTypeEnum: 'MONTHLY_RENT' | 'JEONSE' | 'SALE';
     };
     CompositeTypes: {
       [_ in never]: never;
