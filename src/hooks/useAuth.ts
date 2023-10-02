@@ -16,7 +16,6 @@ export const useAuth = () => {
         emailRedirectTo: `${window.location.origin}${routerPathnames.authCallback}`,
       },
     });
-    router.refresh();
   };
 
   const signIn = async (email: string, password: string) => {
@@ -24,12 +23,10 @@ export const useAuth = () => {
       email,
       password,
     });
-    router.refresh();
   };
 
   const signOut = async () => {
     await supabase.auth.signOut();
-    router.refresh();
   };
 
   return { signUp, signIn, signOut };

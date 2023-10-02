@@ -1,4 +1,4 @@
-import Buttons from '@components/main/Buttons';
+import Buttons from '@components/Main/Buttons';
 
 const Home = () => (
   <main>

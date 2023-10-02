@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { PropsWithChildren } from 'react';
 import { useServerSupabase } from '@hooks/useServerSupabase';
+import UserProfileProvider from '@components/Layout/UserProfileProvider';
+import { RecoilProvider } from '@components/Layout/RecoilProvider';
 import styles from '@styles/reset.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -12,11 +14,20 @@ export const metadata: Metadata = {
 
 export const RootLayout = async ({ children }: PropsWithChildren) => {
   const { supabase } = useServerSupabase();
-  const { data } = await supabase.auth.getSession();
-  // console.log(Date.now(), data.session);
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <RecoilProvider>
+          <UserProfileProvider session={session}>
+            {children}
+          </UserProfileProvider>
+        </RecoilProvider>
+      </body>
     </html>
   );
 };

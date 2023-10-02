@@ -36,6 +36,9 @@
       "@hooks/*": [
         "./hooks/*"
       ],
+      "@recoil/*": [
+        "./recoil/*"
+      ],
       "@styles/*": [
         "./styles/*"
       ],
