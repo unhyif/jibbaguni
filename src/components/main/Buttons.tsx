@@ -7,8 +7,10 @@ interface ButtonsProps {}
 const Buttons = (props: ButtonsProps) => {
   const { signUp, signIn, signOut } = useAuth();
 
-  const handleSignUp = () => signUp('b@naver.com', '123456');
-  const handleSignIn = () => signIn('b@naver.com', '123456');
+  const handleSignUp = (email?: string, password?: string) =>
+    signUp('a@naver.com', '123456');
+  const handleSignIn = (email?: string, password?: string) =>
+    signIn('a@naver.com', '123456');
   const handleSignOut = () => signOut();
 
   return (

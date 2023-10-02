@@ -1,7 +1,6 @@
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import { useClientSupabase } from '@hooks/useClientSupabase';
-import { routerPathnames } from '~/constants/url/routerPathnames';
+import { routerPathnames } from '@constants/url/routerPathnames';
 
 interface UseAuthProps {}
 
@@ -32,16 +31,6 @@ export const useAuth = () => {
     await supabase.auth.signOut();
     router.refresh();
   };
-
-  useEffect(() => {
-    const getSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      console.log(session);
-    };
-    getSession();
-  }, [supabase]);
 
   return { signUp, signIn, signOut };
 };
