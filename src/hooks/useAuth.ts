@@ -1,11 +1,9 @@
-import { useRouter } from 'next/navigation';
 import { useClientSupabase } from '@hooks/useClientSupabase';
 import { routerPathnames } from '@constants/url/routerPathnames';
 
 interface UseAuthProps {}
 
 export const useAuth = () => {
-  const router = useRouter();
   const { supabase } = useClientSupabase();
 
   const signUp = async (email: string, password: string) => {

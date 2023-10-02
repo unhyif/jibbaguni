@@ -18,12 +18,26 @@ export const RootLayout = async ({ children }: PropsWithChildren) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
+  const accessToken = session?.access_token ?? null;
+
+  const getUserProfile = async () => {
+    const { data } = await supabase
+      .from('userProfile')
+      .select('*')
+      .eq('id', session?.user.id);
+    const userProfile = data?.[0] ?? null;
+    return userProfile;
+  };
+  const userProfile = session ? await getUserProfile() : null;
 
   return (
     <html lang="ko">
       <body className={inter.className}>
         <RecoilProvider>
-          <UserProfileProvider session={session}>
+          <UserProfileProvider
+            accessToken={accessToken}
+            userProfile={userProfile}
+          >
             {children}
           </UserProfileProvider>
         </RecoilProvider>
