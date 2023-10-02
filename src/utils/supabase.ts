@@ -10,3 +10,5 @@ export const getServerSupabase = (cookies: ReadonlyRequestCookies) =>
   createServerComponentClient<Database>({
     cookies: () => cookies,
   });
+
+export const getTimestamp = () => new Date().toISOString();

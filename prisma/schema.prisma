@@ -16,7 +16,7 @@ model userProfile {
 model visitLog {
   id              Int                  @id @default(autoincrement())
   createdAt       DateTime             @default(now())
-  updatedAt       DateTime             @updatedAt
+  updatedAt       DateTime             @updatedAt @default(now())
   userProfile     userProfile          @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
   userProfileId   String               @db.Uuid
   link            String?

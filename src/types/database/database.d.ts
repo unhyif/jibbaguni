@@ -137,7 +137,7 @@ export interface Database {
           transactionType?:
             | Database['public']['Enums']['transactionTypeEnum']
             | null;
-          updatedAt: string;
+          updatedAt?: string;
           userProfileId: string;
         };
         Update: {

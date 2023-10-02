@@ -1,4 +1,4 @@
-import { clientSupabase } from '@utils/supabase';
+import { clientSupabase, getTimestamp } from '@utils/supabase';
 import { useRecoilValue } from 'recoil';
 import { userProfileAtom } from '@recoil/states';
 import { InsertParams, UpdateParams } from '~/types/database/utils';
@@ -8,14 +8,17 @@ interface UseVisitLogProps {}
 export const useVisitLog = () => {
   const user = useRecoilValue(userProfileAtom);
 
-  const insert = async (params: InsertParams<'visitLog'>) => {
+  const insert = async (
+    params: Omit<InsertParams<'visitLog'>, 'userProfileId'>,
+  ) => {
     const insertedVisitLog = await clientSupabase
       .from('visitLog')
       .insert({
         ...params,
         userProfileId: user?.id ?? '',
       })
-      .select();
+      .select()
+      .single();
     return insertedVisitLog;
   };
 
@@ -25,9 +28,10 @@ export const useVisitLog = () => {
   ) => {
     const updatedVisitLog = await clientSupabase
       .from('visitLog')
-      .update(params)
+      .update({ ...params, updatedAt: getTimestamp() })
       .eq('id', visitLogId)
-      .select();
+      .select()
+      .single();
     return updatedVisitLog;
   };
 
