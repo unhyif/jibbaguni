@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { PropsWithChildren } from 'react';
-import { useServerSupabase } from '@hooks/useServerSupabase';
 import UserProfileProvider from '@components/Layout/UserProfileProvider';
 import { RecoilProvider } from '@components/Layout/RecoilProvider';
 import '@styles/reset.css';
+import { getServerSupabase } from '@utils/supabase';
 import { cookies } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export const RootLayout = async ({ children }: PropsWithChildren) => {
-  const { supabase } = useServerSupabase(cookies());
+  const supabase = getServerSupabase(cookies());
 
   const {
     data: { session },
@@ -22,11 +22,10 @@ export const RootLayout = async ({ children }: PropsWithChildren) => {
   const accessToken = session?.access_token ?? null;
 
   const getUserProfile = async () => {
-    const { data } = await supabase
+    const { data: userProfile } = await supabase
       .from('userProfile')
       .select('*')
-      .eq('id', session?.user.id ?? '');
-    const userProfile = data?.[0] ?? null;
+      .maybeSingle();
     return userProfile;
   };
   const userProfile = session ? await getUserProfile() : null;

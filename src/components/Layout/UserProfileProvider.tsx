@@ -2,9 +2,9 @@
 
 import { PropsWithChildren, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useClientSupabase } from '@hooks/useClientSupabase';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
 import { userProfileAtom } from '@recoil/states';
+import { clientSupabase } from '@utils/supabase';
 import { Model } from '~/types/database/utils';
 
 interface UserProfileProviderProps {
@@ -18,7 +18,6 @@ const UserProfileProvider = ({
   children,
 }: PropsWithChildren<UserProfileProviderProps>) => {
   const router = useRouter();
-  const { supabase } = useClientSupabase();
 
   const setUserProfile = useSetRecoilState(userProfileAtom);
   const resetUserProfile = useResetRecoilState(userProfileAtom);
@@ -26,7 +25,7 @@ const UserProfileProvider = ({
   useEffect(() => {
     const {
       data: { subscription: authListener },
-    } = supabase.auth.onAuthStateChange((_, session) => {
+    } = clientSupabase.auth.onAuthStateChange((_, session) => {
       const updatedAccessToken = session?.access_token ?? null;
       if (updatedAccessToken !== accessToken) {
         router.refresh();

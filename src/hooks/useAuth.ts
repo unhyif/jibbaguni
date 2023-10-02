@@ -1,13 +1,11 @@
-import { useClientSupabase } from '@hooks/useClientSupabase';
 import { routerPathnames } from '@constants/url/routerPathnames';
+import { clientSupabase } from '@utils/supabase';
 
 interface UseAuthProps {}
 
 export const useAuth = () => {
-  const { supabase } = useClientSupabase();
-
   const signUp = async (email: string, password: string) => {
-    await supabase.auth.signUp({
+    await clientSupabase.auth.signUp({
       email,
       password,
       options: {
@@ -17,14 +15,14 @@ export const useAuth = () => {
   };
 
   const signIn = async (email: string, password: string) => {
-    await supabase.auth.signInWithPassword({
+    await clientSupabase.auth.signInWithPassword({
       email,
       password,
     });
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    await clientSupabase.auth.signOut();
   };
 
   return { signUp, signIn, signOut };
