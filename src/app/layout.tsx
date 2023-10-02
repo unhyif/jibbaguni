@@ -5,6 +5,7 @@ import { useServerSupabase } from '@hooks/useServerSupabase';
 import UserProfileProvider from '@components/Layout/UserProfileProvider';
 import { RecoilProvider } from '@components/Layout/RecoilProvider';
 import '@styles/reset.css';
+import { cookies } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export const RootLayout = async ({ children }: PropsWithChildren) => {
-  const { supabase } = useServerSupabase();
+  const { supabase } = useServerSupabase(cookies());
 
   const {
     data: { session },
@@ -24,7 +25,7 @@ export const RootLayout = async ({ children }: PropsWithChildren) => {
     const { data } = await supabase
       .from('userProfile')
       .select('*')
-      .eq('id', session?.user.id);
+      .eq('id', session?.user.id ?? '');
     const userProfile = data?.[0] ?? null;
     return userProfile;
   };

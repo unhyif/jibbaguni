@@ -9,7 +9,7 @@ import { Model } from '~/types/database/utils';
 
 interface UserProfileProviderProps {
   accessToken: string | null;
-  userProfile: Model<'userProfile'>;
+  userProfile: Model<'userProfile'> | null;
 }
 
 const UserProfileProvider = ({
