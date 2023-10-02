@@ -1,4 +1,4 @@
-import { routerPathnames } from '@constants/url/routerPathnames';
+import { routerPathnames } from '@constants/routerPathnames';
 import { clientSupabase } from '@utils/supabase';
 
 interface UseAuthProps {}

@@ -14,12 +14,10 @@ const Home = async () => {
     const { data: visitLogs } = await supabase
       .from('visitLog')
       .select('*')
-      .order('createdAt', { ascending: false })
-      .returns<Model<'visitLog'>[]>();
-    return visitLogs;
+      .order('createdAt', { ascending: false });
+    return visitLogs as Model<'visitLog'>[];
   };
   const visitLogs = session ? await getVisitLogs() : [];
-  console.log(visitLogs);
 
   return (
     <main>

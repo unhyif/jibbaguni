@@ -1,7 +1,12 @@
 import { Database } from '~/types/database/database';
 
-export type Model<T extends keyof Database['public']['Tables']> =
-  Database['public']['Tables'][T]['Row'];
+type Tables = Database['public']['Tables'];
+type Enums = Database['public']['Enums'];
 
-export type Enum<T extends keyof Database['public']['Enums']> =
-  Database['public']['Enums'][T];
+export type Model<T extends keyof Tables> = Tables[T]['Row'];
+
+export type Enum<T extends keyof Enums> = Enums[T];
+
+export type InsertParams<T extends keyof Tables> = Tables[T]['Insert'];
+
+export type UpdateParams<T extends keyof Tables> = Tables[T]['Update'];
