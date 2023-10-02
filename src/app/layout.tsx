@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react';
 import { useServerSupabase } from '@hooks/useServerSupabase';
 import UserProfileProvider from '@components/Layout/UserProfileProvider';
 import { RecoilProvider } from '@components/Layout/RecoilProvider';
-import styles from '@styles/reset.css';
+import '@styles/reset.css';
 
 const inter = Inter({ subsets: ['latin'] });
 

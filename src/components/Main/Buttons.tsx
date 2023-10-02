@@ -1,7 +1,6 @@
 'use client';
 
 import { useAuth } from '@hooks/useAuth';
-import { useUser } from '@supabase/auth-helpers-react';
 
 interface ButtonsProps {}
 
