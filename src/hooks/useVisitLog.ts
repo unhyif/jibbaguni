@@ -19,16 +19,26 @@ export const useVisitLog = () => {
     return insertedVisitLog;
   };
 
-  const update = async (params: UpdateParams<'visitLog'>) => {
+  const update = async (
+    visitLogId: number,
+    params: UpdateParams<'visitLog'>,
+  ) => {
     const updatedVisitLog = await clientSupabase
       .from('visitLog')
-      .update({
-        ...params,
-        userProfileId: user?.id ?? '',
-      })
+      .update(params)
+      .eq('id', visitLogId)
       .select();
     return updatedVisitLog;
   };
 
-  return { insert, update };
+  const remove = async (visitLogId: number) => {
+    const removedVisitLog = await clientSupabase
+      .from('visitLog')
+      .delete()
+      .eq('id', visitLogId)
+      .select();
+    return removedVisitLog;
+  };
+
+  return { insert, update, remove };
 };
