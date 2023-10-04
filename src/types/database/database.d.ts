@@ -107,8 +107,10 @@ export interface Database {
           floor: number | null;
           hasElevator: boolean | null;
           id: number;
+          isFavorite: boolean;
           link: string | null;
           maintenanceCost: number | null;
+          memo: string | null;
           monthly: number | null;
           price: number | null;
           realEstate: Json | null;
@@ -128,8 +130,10 @@ export interface Database {
           floor?: number | null;
           hasElevator?: boolean | null;
           id?: number;
+          isFavorite?: boolean;
           link?: string | null;
           maintenanceCost?: number | null;
+          memo?: string | null;
           monthly?: number | null;
           price?: number | null;
           realEstate?: Json | null;
@@ -149,8 +153,10 @@ export interface Database {
           floor?: number | null;
           hasElevator?: boolean | null;
           id?: number;
+          isFavorite?: boolean;
           link?: string | null;
           maintenanceCost?: number | null;
+          memo?: string | null;
           monthly?: number | null;
           price?: number | null;
           realEstate?: Json | null;

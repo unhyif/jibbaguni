@@ -19,6 +19,7 @@ model visitLog {
   updatedAt       DateTime             @updatedAt @default(now())
   userProfile     userProfile          @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
   userProfileId   String               @db.Uuid
+  isFavorite      Boolean              @default(false)
   link            String?              @db.VarChar(255)
   address         Json?
   realEstate      Json?
@@ -34,7 +35,7 @@ model visitLog {
   canPark         Boolean?
   images          visitLogImage[]
   furnitures      furniture[]          @relation("furnitureTovisitLog")
-  memo            String               @db.VarChar(255)
+  memo            String?              @db.VarChar(255)
 }
 
 model visitLogImage {
