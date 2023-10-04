@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
+import { HEADER_HEIGHT } from '@styles/constants';
 
 interface HeaderProps {
   title?: string;
@@ -7,7 +8,7 @@ interface HeaderProps {
 
 const Header = ({ title, children }: PropsWithChildren<HeaderProps>) => (
   <Wrapper>
-    <Title>{title}</Title>
+    {title && <Title>{title}</Title>}
     {children}
   </Wrapper>
 );
@@ -18,8 +19,10 @@ const Wrapper = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 5.4rem;
-  padding: 0 2rem;
+  height: ${HEADER_HEIGHT}rem;
+  display: flex;
+  align-items: center;
+  padding: 0 20rem;
   background: white;
 `;
 const Title = styled.span`

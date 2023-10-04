@@ -1,5 +1,3 @@
-'use client';
-
 import { useAuth } from '@hooks/useAuth';
 import { useVisitLog } from '@hooks/useVisitLog';
 import { transactionTypes } from '@constants/schema';

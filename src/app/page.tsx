@@ -1,6 +1,6 @@
-import Buttons from '@components/Main/Buttons';
 import { getServerSupabase } from '@utils/supabase';
 import { cookies } from 'next/headers';
+import Main from '@components/Main';
 import { Model } from '~/types/database/utils';
 
 const Home = async () => {
@@ -19,11 +19,7 @@ const Home = async () => {
   };
   const visitLogs = session ? await getVisitLogs() : [];
 
-  return (
-    <main>
-      <Buttons />
-    </main>
-  );
+  return <Main />;
 };
 
 export default Home;
