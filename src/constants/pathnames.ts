@@ -1,4 +1,4 @@
-export const routerPathnames = {
+export const pathnames = {
   main: '/',
   authCallback: '/auth/callback',
 };

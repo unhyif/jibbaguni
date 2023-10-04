@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { PropsWithChildren } from 'react';
 import UserProfileProvider from '@components/Layout/UserProfileProvider';
 import { RecoilProvider } from '@components/Layout/RecoilProvider';
-import '@styles/reset.css';
+import '@styles/global.css';
 import { getServerSupabase } from '@utils/supabase';
 import { cookies } from 'next/headers';
+import localFont from 'next/font/local';
 
-const inter = Inter({ subsets: ['latin'] });
+const defaultFont = localFont({
+  src: '../styles/fonts/PretendardVariable.woff2',
+});
 
 export const metadata: Metadata = {
   title: '집바구니',
@@ -32,7 +34,7 @@ export const RootLayout = async ({ children }: PropsWithChildren) => {
 
   return (
     <html lang="ko">
-      <body className={inter.className}>
+      <body className={defaultFont.className}>
         <RecoilProvider>
           <UserProfileProvider
             accessToken={accessToken}
