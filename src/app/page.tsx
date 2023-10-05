@@ -19,7 +19,7 @@ const Home = async () => {
   };
   const visitLogs = session ? await getVisitLogs() : [];
 
-  return <Main />;
+  return <Main initialVisitLogs={visitLogs} />;
 };
 
 export default Home;

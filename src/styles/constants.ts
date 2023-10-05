@@ -1,1 +1,1 @@
-export const HEADER_HEIGHT = 54;
+export const HEADER_HEIGHT = 5.4;
