@@ -1,6 +1,6 @@
 import { getServerSupabase } from '@utils/supabase';
 import { cookies } from 'next/headers';
-import Main from '@components/Main';
+import Main from '@components/main';
 import { Model } from '~/types/database/utils';
 
 const Home = async () => {

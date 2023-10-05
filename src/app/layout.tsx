@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
-import UserProfileProvider from '@components/Layout/UserProfileProvider';
-import { RecoilProvider } from '@components/Layout/RecoilProvider';
+import UserProfileProvider from '@components/layout/UserProfileProvider';
+import { RecoilProvider } from '@components/layout/RecoilProvider';
 import '@styles/global.css';
 import { getServerSupabase } from '@utils/supabase';
 import { cookies } from 'next/headers';

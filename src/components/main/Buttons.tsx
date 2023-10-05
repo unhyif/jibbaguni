@@ -3,6 +3,7 @@ import { useVisitLog } from '@hooks/useVisitLog';
 import { transactionTypes } from '@constants/schema';
 import { userProfileAtom } from '@recoil/states';
 import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
 
 interface ButtonsProps {}
 
@@ -27,7 +28,7 @@ const Buttons = (props: ButtonsProps) => {
   const handleRemove = () => remove(2);
 
   return (
-    <>
+    <Wrapper>
       <h1>{user?.id}</h1>
       <button onClick={handleSignUp}>Sign up</button>
       <button onClick={handleSignIn}>Sign in</button>
@@ -35,8 +36,12 @@ const Buttons = (props: ButtonsProps) => {
       <button onClick={handleInsert}>Insert</button>
       <button onClick={handleUpdate}>Update</button>
       <button onClick={handleRemove}>Delete</button>
-    </>
+    </Wrapper>
   );
 };
 
 export default Buttons;
+
+const Wrapper = styled.div`
+  padding: 2rem;
+`;

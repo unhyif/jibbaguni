@@ -1,15 +1,15 @@
 'use client';
 
-import Buttons from '@components/Main/Buttons';
+import Buttons from '@components/main/Buttons';
 import styled from 'styled-components';
-import Question from '@assets/svgs/ri_question-line.svg';
-import Header from '@components/DesignSystem/Header';
 import { HEADER_HEIGHT } from '@styles/constants';
-import MainHeader from '@components/Main/MainHeader';
+import MainHeader from '@components/main/MainHeader';
 import { useState } from 'react';
-import RoundButton from '@components/DesignSystem/RoundButton';
-import { zIndex } from '@styles/zIndex';
-import { color } from '@styles/color';
+import RoundButton from '@components/designSystem/RoundButton';
+import { elevation } from '@styles/designSystem/elevation';
+import { color } from '@styles/designSystem/color';
+import Link from 'next/link';
+import { pathnames } from '@constants/pathnames';
 import { Model } from '~/types/database/utils';
 
 interface MainProps {
@@ -28,9 +28,11 @@ const Main = ({ initialVisitLogs }: MainProps) => {
       <MainHeader />
       <Buttons />
       {!!numOfFavoriteVisitLogs && (
-        <CompareButton backgroundColor={color.mint} fontColor={color.white}>
-          비교하기 ({numOfFavoriteVisitLogs})
-        </CompareButton>
+        <Link href={pathnames.compareVisitLog}>
+          <CompareButton backgroundColor={color.mint} fontColor={color.white}>
+            비교하기 ({numOfFavoriteVisitLogs})
+          </CompareButton>
+        </Link>
       )}
     </Wrapper>
   );
@@ -46,6 +48,6 @@ const CompareButton = styled(RoundButton)`
   left: 50%;
   transform: translateX(-50%);
   bottom: 4rem;
-  z-index: ${zIndex.footer};
+  z-index: ${elevation.footer};
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
 `;

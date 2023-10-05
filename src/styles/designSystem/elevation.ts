@@ -1,4 +1,4 @@
-export const zIndex = {
+export const elevation = {
   header: 1,
   footer: 1,
   modal: 2,

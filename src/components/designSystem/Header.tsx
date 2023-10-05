@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { HEADER_HEIGHT } from '@styles/constants';
-import { color } from '@styles/color';
+import { color } from '@styles/designSystem/color';
 
 interface HeaderProps {
   title?: string;
@@ -25,6 +25,7 @@ const Wrapper = styled.header`
   align-items: center;
   padding: 0 2rem;
   background: ${color.white};
+  border-bottom: 1px solid ${color.lightGrey};
 `;
 const Title = styled.span`
   position: absolute;
