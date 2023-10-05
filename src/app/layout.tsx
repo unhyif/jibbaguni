@@ -6,6 +6,7 @@ import '@styles/global.css';
 import { getServerSupabase } from '@utils/supabase';
 import { cookies } from 'next/headers';
 import localFont from 'next/font/local';
+import StyledComponentsRegistry from '@components/layout/StyledComponentsRegistry';
 
 const defaultFont = localFont({
   src: '../styles/fonts/PretendardVariable.woff2',
@@ -35,14 +36,16 @@ export const RootLayout = async ({ children }: PropsWithChildren) => {
   return (
     <html lang="ko">
       <body className={defaultFont.className}>
-        <RecoilProvider>
-          <UserProfileProvider
-            accessToken={accessToken}
-            userProfile={userProfile}
-          >
-            {children}
-          </UserProfileProvider>
-        </RecoilProvider>
+        <StyledComponentsRegistry>
+          <RecoilProvider>
+            <UserProfileProvider
+              accessToken={accessToken}
+              userProfile={userProfile}
+            >
+              {children}
+            </UserProfileProvider>
+          </RecoilProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

@@ -4,6 +4,7 @@
     "plugin:@typescript-eslint/recommended",
     "airbnb",
     "airbnb-typescript",
+    "plugin:@next/next/recommended",
     "prettier"
   ],
   "plugins": [
@@ -26,7 +27,8 @@
     "import/prefer-default-export": 0,
     "@typescript-eslint/no-shadow": 1,
     "react/require-default-props": 0,
-    "@typescript-eslint/no-use-before-define": 0
+    "@typescript-eslint/no-use-before-define": 0,
+    "react/jsx-no-useless-fragment": 1
   },
   "globals": {
     "React": "writable"
