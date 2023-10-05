@@ -38,8 +38,10 @@ const CreateButton = styled.div`
   gap: 0.4rem;
   align-items: center;
   background: ${color.primary};
+  font-size: 1.4rem;
+  font-weight: 500;
   color: ${color.white};
-  width: 10rem;
+  width: 9.6rem;
   height: 3.6rem;
   border-radius: 0.4rem;
   box-shadow:

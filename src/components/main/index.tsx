@@ -10,6 +10,7 @@ import { elevation } from '@styles/designSystem/elevation';
 import { color } from '@styles/designSystem/color';
 import Link from 'next/link';
 import { pathnames } from '@constants/pathnames';
+import Empty from '@components/main/Empty';
 import { Model } from '~/types/database/utils';
 
 interface MainProps {
@@ -20,13 +21,17 @@ const Main = ({ initialVisitLogs }: MainProps) => {
   const [visitLogs, setVisitLogs] =
     useState<Model<'visitLog'>[]>(initialVisitLogs);
 
-  const numOfFavoriteVisitLogs =
-    visitLogs.filter(visitLog => visitLog.isFavorite).length || 1;
+  const numOfFavoriteVisitLogs = visitLogs.filter(
+    visitLog => visitLog.isFavorite,
+  ).length;
 
   return (
     <Wrapper>
       <MainHeader />
-      <Buttons />
+      <Body>
+        {visitLogs.length ? <div /> : <Empty />}
+        {/* <Buttons /> */}
+      </Body>
       {!!numOfFavoriteVisitLogs && (
         <Link href={pathnames.compareVisitLog}>
           <CompareButton backgroundColor={color.mint} fontColor={color.white}>
@@ -40,8 +45,13 @@ const Main = ({ initialVisitLogs }: MainProps) => {
 
 export default Main;
 
-const Wrapper = styled.main`
+const Wrapper = styled.div`
   padding-top: ${HEADER_HEIGHT}rem;
+`;
+const Body = styled.main`
+  background: #fbfbfb;
+  padding: 2rem 2rem 4rem 2rem;
+  min-height: calc(100vh - ${HEADER_HEIGHT}rem);
 `;
 const CompareButton = styled(RoundButton)`
   position: fixed;
