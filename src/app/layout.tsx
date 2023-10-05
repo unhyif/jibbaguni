@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: '집바구니',
 };
 
-export const RootLayout = async ({ children }: PropsWithChildren) => {
+export default async function RootLayout({ children }: PropsWithChildren) {
   const supabase = getServerSupabase(cookies());
 
   const {
@@ -49,6 +49,4 @@ export const RootLayout = async ({ children }: PropsWithChildren) => {
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}
