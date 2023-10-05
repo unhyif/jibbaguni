@@ -29,5 +29,6 @@ const Wrapper = styled.div`
   }
 `;
 const Text = styled.p`
+  font-weight: 500;
   color: ${color.midGrey};
 `;

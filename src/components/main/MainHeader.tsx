@@ -39,9 +39,9 @@ const CreateButton = styled.div`
   align-items: center;
   background: ${color.primary};
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 700;
   color: ${color.white};
-  width: 9.6rem;
+  width: 10rem;
   height: 3.6rem;
   border-radius: 0.4rem;
   box-shadow:
