@@ -12,8 +12,8 @@ export const directions: ObjectWithFixedKeys<
 };
 
 export const furnitures: ObjectWithFixedKeys<
-  Enum<'furnitureEnum'>,
-  Enum<'furnitureEnum'>
+  Enum<'furnitureNameEnum'>,
+  Enum<'furnitureNameEnum'>
 > = {
   AIR_CONDITIONER: 'AIR_CONDITIONER',
   BED: 'BED',

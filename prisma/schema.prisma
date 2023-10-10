@@ -14,41 +14,41 @@ model userProfile {
 }
 
 model visitLog {
-  id              Int                  @id @default(autoincrement())
-  createdAt       DateTime             @default(now())
-  updatedAt       DateTime             @updatedAt @default(now())
-  userProfile     userProfile          @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
-  userProfileId   String               @db.Uuid
-  isFavorite      Boolean              @default(false)
-  link            String?              @db.VarChar(255)
-  address         Json?
-  realEstate      Json?
-  transactionType transactionTypeEnum?
+  id              Int                 @id @default(autoincrement())
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt @default(now())
+  userProfile     userProfile         @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
+  userProfileId   String              @db.Uuid
+  isFavorite      Boolean             @default(false)
+  images          visitLogImage[]
+  link            String              @db.VarChar(255)
+  address         Json
+  realEstate      Json
+  transactionType transactionTypeEnum
   price           Int?
   monthly         Int?
   maintenanceCost Int?
   supplyArea      Float?
   exclusiveArea   Float?
-  direction       directionEnum?
+  direction       directionEnum
   floor           Int?
-  hasElevator     Boolean?
-  canPark         Boolean?
-  images          visitLogImage[]
-  furnitures      furniture[]          @relation("furnitureTovisitLog")
-  memo            String?              @db.VarChar(255)
+  hasElevator     Boolean             @default(false)
+  canPark         Boolean             @default(false)
+  furnitures      furniture[]         @relation("furnitureTovisitLog")
+  memo            String              @db.VarChar(255)
 }
 
 model visitLogImage {
   id         Int      @id @default(autoincrement())
   url        String   @db.VarChar(255)
-  visitLogId Int
   visitLog   visitLog @relation(fields: [visitLogId], references: [id])
+  visitLogId Int
 }
 
 model furniture {
-  id        Int           @id @default(autoincrement())
-  code      furnitureEnum
-  visitLogs visitLog[]    @relation("furnitureTovisitLog")
+  id        Int               @id @default(autoincrement())
+  name      furnitureNameEnum
+  visitLogs visitLog[]        @relation("furnitureTovisitLog")
 }
 
 enum transactionTypeEnum {
@@ -64,7 +64,7 @@ enum directionEnum {
   NORTH
 }
 
-enum furnitureEnum {
+enum furnitureNameEnum {
   AIR_CONDITIONER
   BED
   CLOSET

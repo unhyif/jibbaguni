@@ -8,10 +8,10 @@ interface UseVisitLogProps {}
 export const useVisitLog = () => {
   const user = useRecoilValue(userProfileAtom);
 
-  const insert = async (
+  const create = async (
     params: Omit<InsertParams<'visitLog'>, 'userProfileId'>,
   ) => {
-    const insertedVisitLog = await clientSupabase
+    const createdVisitLog = await clientSupabase
       .from('visitLog')
       .insert({
         ...params,
@@ -19,20 +19,17 @@ export const useVisitLog = () => {
       })
       .select()
       .single();
-    return insertedVisitLog;
+    return createdVisitLog;
   };
 
-  const update = async (
-    visitLogId: number,
-    params: UpdateParams<'visitLog'>,
-  ) => {
-    const updatedVisitLog = await clientSupabase
+  const edit = async (visitLogId: number, params: UpdateParams<'visitLog'>) => {
+    const editedVisitLog = await clientSupabase
       .from('visitLog')
       .update({ ...params, updatedAt: getTimestamp() })
       .eq('id', visitLogId)
       .select()
       .single();
-    return updatedVisitLog;
+    return editedVisitLog;
   };
 
   const remove = async (visitLogId: number) => {
@@ -44,5 +41,5 @@ export const useVisitLog = () => {
     return removedVisitLog;
   };
 
-  return { insert, update, remove };
+  return { create, edit, remove };
 };

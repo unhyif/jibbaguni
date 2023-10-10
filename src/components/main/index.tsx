@@ -33,7 +33,7 @@ const Main = ({ initialVisitLogs }: MainProps) => {
         {visitLogs.length ? (
           <VisitLogList>
             {visitLogs.map(visitLog => (
-              <VisitLog id={visitLog.id} visitLog={visitLog} />
+              <VisitLog key={visitLog.id} visitLog={visitLog} />
             ))}
           </VisitLogList>
         ) : (

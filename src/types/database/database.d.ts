@@ -72,16 +72,16 @@ export interface Database {
       };
       furniture: {
         Row: {
-          code: Database['public']['Enums']['furnitureEnum'];
           id: number;
+          name: Database['public']['Enums']['furnitureNameEnum'];
         };
         Insert: {
-          code: Database['public']['Enums']['furnitureEnum'];
           id?: number;
+          name: Database['public']['Enums']['furnitureNameEnum'];
         };
         Update: {
-          code?: Database['public']['Enums']['furnitureEnum'];
           id?: number;
+          name?: Database['public']['Enums']['furnitureNameEnum'];
         };
         Relationships: [];
       };
@@ -99,71 +99,65 @@ export interface Database {
       };
       visitLog: {
         Row: {
-          address: Json | null;
-          canPark: boolean | null;
+          address: Json;
+          canPark: boolean;
           createdAt: string;
-          direction: Database['public']['Enums']['directionEnum'] | null;
+          direction: Database['public']['Enums']['directionEnum'];
           exclusiveArea: number | null;
           floor: number | null;
-          hasElevator: boolean | null;
+          hasElevator: boolean;
           id: number;
           isFavorite: boolean;
-          link: string | null;
+          link: string;
           maintenanceCost: number | null;
-          memo: string | null;
+          memo: string;
           monthly: number | null;
           price: number | null;
-          realEstate: Json | null;
+          realEstate: Json;
           supplyArea: number | null;
-          transactionType:
-            | Database['public']['Enums']['transactionTypeEnum']
-            | null;
+          transactionType: Database['public']['Enums']['transactionTypeEnum'];
           updatedAt: string;
           userProfileId: string;
         };
         Insert: {
-          address?: Json | null;
-          canPark?: boolean | null;
+          address: Json;
+          canPark?: boolean;
           createdAt?: string;
-          direction?: Database['public']['Enums']['directionEnum'] | null;
+          direction: Database['public']['Enums']['directionEnum'];
           exclusiveArea?: number | null;
           floor?: number | null;
-          hasElevator?: boolean | null;
+          hasElevator?: boolean;
           id?: number;
           isFavorite?: boolean;
-          link?: string | null;
+          link: string;
           maintenanceCost?: number | null;
-          memo?: string | null;
+          memo: string;
           monthly?: number | null;
           price?: number | null;
-          realEstate?: Json | null;
+          realEstate: Json;
           supplyArea?: number | null;
-          transactionType?:
-            | Database['public']['Enums']['transactionTypeEnum']
-            | null;
+          transactionType: Database['public']['Enums']['transactionTypeEnum'];
           updatedAt?: string;
           userProfileId: string;
         };
         Update: {
-          address?: Json | null;
-          canPark?: boolean | null;
+          address?: Json;
+          canPark?: boolean;
           createdAt?: string;
-          direction?: Database['public']['Enums']['directionEnum'] | null;
+          direction?: Database['public']['Enums']['directionEnum'];
           exclusiveArea?: number | null;
           floor?: number | null;
-          hasElevator?: boolean | null;
+          hasElevator?: boolean;
           id?: number;
           isFavorite?: boolean;
-          link?: string | null;
+          link?: string;
           maintenanceCost?: number | null;
-          memo?: string | null;
+          memo?: string;
           monthly?: number | null;
           price?: number | null;
-          realEstate?: Json | null;
+          realEstate?: Json;
           supplyArea?: number | null;
-          transactionType?:
-            | Database['public']['Enums']['transactionTypeEnum']
-            | null;
+          transactionType?: Database['public']['Enums']['transactionTypeEnum'];
           updatedAt?: string;
           userProfileId?: string;
         };
@@ -210,7 +204,7 @@ export interface Database {
     };
     Enums: {
       directionEnum: 'EAST' | 'WEST' | 'SOUTH' | 'NORTH';
-      furnitureEnum:
+      furnitureNameEnum:
         | 'AIR_CONDITIONER'
         | 'BED'
         | 'CLOSET'
