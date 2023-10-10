@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Logo from '@assets/svgs/brand-logo.svg';
-import { color } from '@styles/designSystem/color';
+import { colors } from '@styles/designSystem/colors';
 
 interface EmptyProps {}
 
@@ -30,5 +30,5 @@ const Wrapper = styled.div`
 `;
 const Text = styled.p`
   font-weight: 500;
-  color: ${color.midGrey};
+  color: ${colors.midGrey};
 `;

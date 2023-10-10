@@ -12,11 +12,11 @@ interface UserProfileProviderProps {
   userProfile: Model<'userProfile'> | null;
 }
 
-const UserProfileProvider = ({
-  accessToken,
-  userProfile,
-  children,
-}: PropsWithChildren<UserProfileProviderProps>) => {
+const UserProfileProvider = (
+  props: PropsWithChildren<UserProfileProviderProps>,
+) => {
+  const { accessToken, userProfile, children } = props;
+
   const router = useRouter();
 
   const setUserProfile = useSetRecoilState(userProfileAtom);

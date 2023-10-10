@@ -1,5 +1,9 @@
 @import url('./reset.css');
 
+:root {
+    --black: #222222;
+}
+
 html {
     font-size: 10px;
 }
@@ -9,4 +13,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-size: 1.6rem;
     font-weight: 400;
+    color: var(--black);
+    line-height: 2.6rem;
 }
