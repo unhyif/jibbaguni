@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "visitLog" ALTER COLUMN "link" DROP NOT NULL,
+ALTER COLUMN "memo" DROP NOT NULL;

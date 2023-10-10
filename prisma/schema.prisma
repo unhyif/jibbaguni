@@ -2,6 +2,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator json {
+  provider  = "prisma-json-types-generator"
+  namespace = "PrismaJson"
+}
+
 datasource db {
   provider  = "postgresql"
   url       = env("NEXT_PUBLIC_SUPABASE_STRING")
@@ -21,8 +26,10 @@ model visitLog {
   userProfileId   String              @db.Uuid
   isFavorite      Boolean             @default(false)
   images          visitLogImage[]
-  link            String              @db.VarChar(255)
+  link            String?             @db.VarChar(255)
+  /// [VisitLogAddress]
   address         Json
+  /// [VisitLogRealEstate]
   realEstate      Json
   transactionType transactionTypeEnum
   price           Int?
@@ -35,7 +42,7 @@ model visitLog {
   hasElevator     Boolean             @default(false)
   canPark         Boolean             @default(false)
   furnitures      furniture[]         @relation("furnitureTovisitLog")
-  memo            String              @db.VarChar(255)
+  memo            String?             @db.VarChar(255)
 }
 
 model visitLogImage {

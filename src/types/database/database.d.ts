@@ -108,9 +108,9 @@ export interface Database {
           hasElevator: boolean;
           id: number;
           isFavorite: boolean;
-          link: string;
+          link: string | null;
           maintenanceCost: number | null;
-          memo: string;
+          memo: string | null;
           monthly: number | null;
           price: number | null;
           realEstate: Json;
@@ -129,9 +129,9 @@ export interface Database {
           hasElevator?: boolean;
           id?: number;
           isFavorite?: boolean;
-          link: string;
+          link?: string | null;
           maintenanceCost?: number | null;
-          memo: string;
+          memo?: string | null;
           monthly?: number | null;
           price?: number | null;
           realEstate: Json;
@@ -150,9 +150,9 @@ export interface Database {
           hasElevator?: boolean;
           id?: number;
           isFavorite?: boolean;
-          link?: string;
+          link?: string | null;
           maintenanceCost?: number | null;
-          memo?: string;
+          memo?: string | null;
           monthly?: number | null;
           price?: number | null;
           realEstate?: Json;
