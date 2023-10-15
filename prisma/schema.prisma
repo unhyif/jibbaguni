@@ -4,7 +4,7 @@ generator client {
 
 generator json {
   provider  = "prisma-json-types-generator"
-  namespace = "PrismaJson"
+  namespace = "DatabaseJson"
 }
 
 datasource db {
@@ -28,9 +28,9 @@ model visitLog {
   images          visitLogImage[]
   link            String?             @db.VarChar(255)
   /// [VisitLogAddress]
-  address         Json
+  address         Json?
   /// [VisitLogRealEstate]
-  realEstate      Json
+  realEstate      Json?
   transactionType transactionTypeEnum
   price           Int?
   monthly         Int?

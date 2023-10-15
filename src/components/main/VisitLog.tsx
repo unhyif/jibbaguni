@@ -3,39 +3,40 @@ import { TextEllipsis } from '@styles/mixins';
 import { colors } from '@styles/designSystem/colors';
 import HeartUnFilled from '@assets/svgs/ion_heart-outline.svg';
 import HeartFilled from '@assets/svgs/ion_heart-sharp.svg';
+import dayjs from 'dayjs';
 import { Model } from '~/types/database/utils';
 
 interface VisitLogProps {
   visitLog: Model<'visitLog'>;
 }
 
-const VisitLog = (props: VisitLogProps) => (
-  // const {
-  //   createdAt,
-  //   address,
-  //   transactionType,
-  //   price,
-  //   monthly,
-  //   maintenanceCost,
-  //   exclusiveArea,
-  //   isFavorite,
-  // } = props.visitLog;
-  <Wrapper>
-    <Text>
-      <CreatedAt>23.10.04</CreatedAt>
-      <Address>
-        서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구
-        봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동
-      </Address>
-      <Price>월세 1,000/57 + 관리비 7</Price>
-      <Area>전용면적 약 7평</Area>
-    </Text>
+const VisitLog = (props: VisitLogProps) => {
+  const {
+    createdAt,
+    address,
+    transactionType,
+    price,
+    monthly,
+    maintenanceCost,
+    exclusiveArea,
+    isFavorite,
+  } = props.visitLog;
 
-    <button>
-      <HeartFilled width={28} height={28} />
-    </button>
-  </Wrapper>
-);
+  return (
+    <Wrapper>
+      <Text>
+        <CreatedAt>{dayjs(createdAt).format('YY.MM.DD')}</CreatedAt>
+        {address?.addressStr && <Address>{address.addressStr}</Address>}
+        <Price>월세 1,000/57 + 관리비 7</Price>
+        <Area>전용면적 약 7평</Area>
+      </Text>
+
+      <button>
+        <HeartFilled width={28} height={28} />
+      </button>
+    </Wrapper>
+  );
+};
 
 export default VisitLog;
 

@@ -29,7 +29,8 @@
     "react/require-default-props": 0,
     "@typescript-eslint/no-use-before-define": 0,
     "react/jsx-no-useless-fragment": 1,
-    "react/no-unused-prop-types": 1
+    "react/no-unused-prop-types": 1,
+    "react/destructuring-assignment": 1
   },
   "globals": {
     "React": "writable"

@@ -9,7 +9,7 @@
     "lint": "next lint",
     "postinstall": "husky install",
     "migrate": "prisma migrate dev",
-    "db-ts": "dotenv -e .env.development -- cross-var supabase gen types typescript --project-id %NEXT_PUBLIC_SUPABASE_PROJECT_ID% > src/types/database/database.d.ts"
+    "db-ts": "dotenv -e .env.development -- cross-var supabase gen types typescript --project-id %NEXT_PUBLIC_SUPABASE_PROJECT_ID% > src/types/database/databaseGenerated.d.ts"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -51,6 +51,7 @@
     "prisma-json-types-generator": "^3.0.2",
     "studio": "^0.13.5",
     "supabase": "^1.99.5",
+    "type-fest": "^4.4.0",
     "typescript": "^5.2.2"
   }
 }

@@ -1,5 +1,5 @@
 declare global {
-  namespace PrismaJson {
+  namespace DatabaseJson {
     interface VisitLogAddress {
       x?: number;
       y?: number;
@@ -13,3 +13,5 @@ declare global {
     }
   }
 }
+
+export {};
