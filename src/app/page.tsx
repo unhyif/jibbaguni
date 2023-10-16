@@ -1,7 +1,7 @@
 import { getServerSupabase } from '@utils/supabase';
 import { cookies } from 'next/headers';
 import Main from '@components/main';
-import { Model } from '~/types/database/utils';
+import { VisitLogType } from '~/types/visitLog';
 
 const Home = async () => {
   const supabase = getServerSupabase(cookies());
@@ -15,7 +15,7 @@ const Home = async () => {
       .from('visitLog')
       .select('*')
       .order('createdAt', { ascending: false });
-    return visitLogs as Model<'visitLog'>[];
+    return visitLogs as VisitLogType[];
   };
   const visitLogs = session ? await getVisitLogs() : [];
 

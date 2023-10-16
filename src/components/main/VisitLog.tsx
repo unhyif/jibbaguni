@@ -4,10 +4,12 @@ import { colors } from '@styles/designSystem/colors';
 import HeartUnFilled from '@assets/svgs/ion_heart-outline.svg';
 import HeartFilled from '@assets/svgs/ion_heart-sharp.svg';
 import dayjs from 'dayjs';
-import { Model } from '~/types/database/utils';
+import { transactionTypes } from '@constants/schema';
+import { formatTransactionType } from '@utils/visitLog';
+import { VisitLogType } from '~/types/visitLog';
 
 interface VisitLogProps {
-  visitLog: Model<'visitLog'>;
+  visitLog: VisitLogType;
 }
 
 const VisitLog = (props: VisitLogProps) => {
@@ -22,17 +24,46 @@ const VisitLog = (props: VisitLogProps) => {
     isFavorite,
   } = props.visitLog;
 
+  const formatPrice = () => {
+    switch (transactionType) {
+      case transactionTypes.MONTHLY_RENT: {
+        const prices = price ? [price.toLocaleString(), monthly] : [monthly];
+        const formattedMaintenanceCost = maintenanceCost
+          ? ` + 관리비 ${maintenanceCost}`
+          : '';
+        return `${formatTransactionType(transactionType)} ${prices.join(
+          '/',
+        )}${formattedMaintenanceCost}`;
+      }
+
+      case transactionTypes.JEONSE:
+      case transactionTypes.SALE:
+      default: {
+        const formattedMaintenanceCost = maintenanceCost
+          ? ` + 관리비 ${maintenanceCost}`
+          : '';
+        return `${formatTransactionType(
+          transactionType,
+        )} ${price.toLocaleString()}${formattedMaintenanceCost}`;
+      }
+    }
+  };
+
   return (
     <Wrapper>
       <Text>
         <CreatedAt>{dayjs(createdAt).format('YY.MM.DD')}</CreatedAt>
         {address?.addressStr && <Address>{address.addressStr}</Address>}
-        <Price>월세 1,000/57 + 관리비 7</Price>
-        <Area>전용면적 약 7평</Area>
+        <Price>{formatPrice()}</Price>
+        <Area>전용면적 약 {exclusiveArea}평</Area>
       </Text>
 
       <button>
-        <HeartFilled width={28} height={28} />
+        {isFavorite ? (
+          <HeartFilled width={28} height={28} />
+        ) : (
+          <HeartUnFilled width={28} height={28} />
+        )}
       </button>
     </Wrapper>
   );

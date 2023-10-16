@@ -1,4 +1,4 @@
-import { clientSupabase, getTimestamp } from '@utils/supabase';
+import { clientSupabase, getCurrentDate } from '@utils/supabase';
 import { useRecoilValue } from 'recoil';
 import { userProfileAtom } from '@recoil/states';
 import { InsertParams, UpdateParams } from '~/types/database/utils';
@@ -25,7 +25,7 @@ export const useVisitLog = () => {
   const edit = async (visitLogId: number, params: UpdateParams<'visitLog'>) => {
     const editedVisitLog = await clientSupabase
       .from('visitLog')
-      .update({ ...params, updatedAt: getTimestamp() })
+      .update({ ...params, updatedAt: getCurrentDate() })
       .eq('id', visitLogId)
       .select()
       .single();

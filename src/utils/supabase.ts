@@ -11,4 +11,4 @@ export const getServerSupabase = (cookies: ReadonlyRequestCookies) =>
     cookies: () => cookies,
   });
 
-export const getTimestamp = () => new Date().toISOString();
+export const getCurrentDate = () => new Date().toISOString();

@@ -12,15 +12,52 @@ import Link from 'next/link';
 import { pathnames } from '@constants/pathnames';
 import Empty from '@components/main/Empty';
 import VisitLog from '@components/main/VisitLog';
+import { getCurrentDate } from '@utils/supabase';
+import { transactionTypes } from '@constants/schema';
 import { Model } from '~/types/database/utils';
+import { VisitLogType } from '~/types/visitLog';
 
 interface MainProps {
-  initialVisitLogs: Model<'visitLog'>[];
+  initialVisitLogs: VisitLogType[];
 }
 
+const MOCK_VISIT_LOGS: VisitLogType[] = [
+  {
+    address: {
+      addressStr:
+        '서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 관악구 봉천동,',
+    },
+    createdAt: getCurrentDate(),
+    transactionType: transactionTypes.MONTHLY_RENT,
+    price: 1000,
+    monthly: 50,
+    maintenanceCost: 7,
+    exclusiveArea: 6.3,
+    isFavorite: true,
+  },
+  {
+    createdAt: getCurrentDate(),
+    transactionType: transactionTypes.JEONSE,
+    price: 1000,
+    exclusiveArea: 6.3,
+    isFavorite: false,
+  },
+  {
+    address: {
+      addressStr:
+        '서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 관악구 봉천동,',
+    },
+    createdAt: getCurrentDate(),
+    transactionType: transactionTypes.SALE,
+    price: 20000,
+    maintenanceCost: 7,
+    exclusiveArea: 6.3,
+    isFavorite: true,
+  },
+];
+
 const Main = ({ initialVisitLogs }: MainProps) => {
-  const [visitLogs, setVisitLogs] =
-    useState<Model<'visitLog'>[]>(initialVisitLogs);
+  const [visitLogs, setVisitLogs] = useState<VisitLogType[]>(MOCK_VISIT_LOGS);
 
   const numOfFavoriteVisitLogs = visitLogs.filter(
     visitLog => visitLog.isFavorite,
