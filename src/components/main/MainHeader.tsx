@@ -11,7 +11,7 @@ interface MainHeaderProps {}
 const MainHeader = (props: MainHeaderProps) => (
   <Header>
     <HeaderContent>
-      <Link href={pathnames.createVisitLog}>
+      <Link href={pathnames.visitLogCreate}>
         <CreateButton>
           <Home />
           <span>기록하기</span>
