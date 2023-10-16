@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { TextEllipsis } from '@styles/mixins';
 import { colors } from '@styles/designSystem/colors';
-import HeartUnFilled from '@assets/svgs/ion_heart-outline.svg';
-import HeartFilled from '@assets/svgs/ion_heart-sharp.svg';
+import HeartUnFilled from '@assets/svgs/ph_heart-light.svg';
+import HeartFilled from '@assets/svgs/ph_heart-fill.svg';
 import dayjs from 'dayjs';
 import { transactionTypes } from '@constants/schema';
 import { formatTransactionType } from '@utils/visitLog';
