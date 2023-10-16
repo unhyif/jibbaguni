@@ -14,3 +14,6 @@ export const formatTransactionType = (
       return '매매';
   }
 };
+
+export const calculate평fromM2 = (m2: number) =>
+  Number((m2 / 3.305785).toFixed(1));

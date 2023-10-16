@@ -32,14 +32,14 @@ const MOCK_VISIT_LOGS: VisitLogType[] = [
     price: 1000,
     monthly: 50,
     maintenanceCost: 7,
-    exclusiveArea: 6.3,
+    exclusiveArea: 21.4,
     isFavorite: true,
   },
   {
     createdAt: getCurrentDate(),
     transactionType: transactionTypes.JEONSE,
     price: 1000,
-    exclusiveArea: 6.3,
+    exclusiveArea: 16.2,
     isFavorite: false,
   },
   {
@@ -51,7 +51,7 @@ const MOCK_VISIT_LOGS: VisitLogType[] = [
     transactionType: transactionTypes.SALE,
     price: 20000,
     maintenanceCost: 7,
-    exclusiveArea: 6.3,
+    exclusiveArea: 34.8,
     isFavorite: true,
   },
 ];

@@ -5,7 +5,7 @@ import HeartUnFilled from '@assets/svgs/ph_heart-light.svg';
 import HeartFilled from '@assets/svgs/ph_heart-fill.svg';
 import dayjs from 'dayjs';
 import { transactionTypes } from '@constants/schema';
-import { formatTransactionType } from '@utils/visitLog';
+import { calculate평fromM2, formatTransactionType } from '@utils/visitLog';
 import { VisitLogType } from '~/types/visitLog';
 
 interface VisitLogProps {
@@ -51,12 +51,14 @@ const VisitLog = (props: VisitLogProps) => {
 
   return (
     <Wrapper>
-      <Text>
+      <Data>
         <CreatedAt>{dayjs(createdAt).format('YY.MM.DD')}</CreatedAt>
         {address?.addressStr && <Address>{address.addressStr}</Address>}
         <Price>{formatPrice()}</Price>
-        <Area>전용면적 약 {exclusiveArea}평</Area>
-      </Text>
+        {exclusiveArea && (
+          <Area>전용면적 약 {calculate평fromM2(exclusiveArea)}평</Area>
+        )}
+      </Data>
 
       <button>
         {isFavorite ? (
@@ -81,7 +83,7 @@ const Wrapper = styled.li`
   border-radius: 1.2rem;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
 `;
-const Text = styled.div`
+const Data = styled.div`
   display: flex;
   flex-direction: column;
 `;
