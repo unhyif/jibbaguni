@@ -11,17 +11,18 @@ import { colors } from '@styles/designSystem/colors';
 import Link from 'next/link';
 import { pathnames } from '@constants/pathnames';
 import Empty from '@components/main/Empty';
-import VisitLog from '@components/main/VisitLog';
+import VisitLogItem from '@components/main/VisitLogItem';
 import { getCurrentDate } from '@utils/supabase';
 import { transactionTypes } from '@constants/schema';
+import { useVisitLog } from '@hooks/useVisitLog';
 import { Model } from '~/types/database/utils';
-import { VisitLogType } from '~/types/visitLog';
+import { VisitLog } from '~/types/visitLog';
 
 interface MainProps {
-  initialVisitLogs: VisitLogType[];
+  initialVisitLogs: VisitLog[];
 }
 
-const MOCK_VISIT_LOGS: VisitLogType[] = [
+const MOCK_VISIT_LOGS: VisitLog[] = [
   {
     address: {
       addressStr:
@@ -57,7 +58,17 @@ const MOCK_VISIT_LOGS: VisitLogType[] = [
 ];
 
 const Main = ({ initialVisitLogs }: MainProps) => {
-  const [visitLogs, setVisitLogs] = useState<VisitLogType[]>(MOCK_VISIT_LOGS);
+  const [visitLogs, setVisitLogs] = useState<VisitLog[]>(MOCK_VISIT_LOGS);
+
+  const { edit } = useVisitLog();
+  const handleClickVisitLogLike = async (id: number, to: boolean) => {
+    await edit(id, { isFavorite: to });
+    setVisitLogs(prev =>
+      prev.map(visitLog =>
+        visitLog.id === id ? { ...visitLog, isFavorite: to } : visitLog,
+      ),
+    );
+  };
 
   const numOfFavoriteVisitLogs = visitLogs.filter(
     visitLog => visitLog.isFavorite,
@@ -70,7 +81,11 @@ const Main = ({ initialVisitLogs }: MainProps) => {
         {visitLogs.length ? (
           <VisitLogList>
             {visitLogs.map(visitLog => (
-              <VisitLog key={visitLog.id} visitLog={visitLog} />
+              <VisitLogItem
+                key={visitLog.id}
+                visitLog={visitLog}
+                onClickLike={handleClickVisitLogLike}
+              />
             ))}
           </VisitLogList>
         ) : (

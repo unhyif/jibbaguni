@@ -6,14 +6,17 @@ import HeartFilled from '@assets/svgs/ph_heart-fill.svg';
 import dayjs from 'dayjs';
 import { transactionTypes } from '@constants/schema';
 import { calculate평fromM2, formatTransactionType } from '@utils/visitLog';
-import { VisitLogType } from '~/types/visitLog';
+import { useVisitLog } from '@hooks/useVisitLog';
+import { VisitLog } from '~/types/visitLog';
 
-interface VisitLogProps {
-  visitLog: VisitLogType;
+interface VisitLogItemProps {
+  visitLog: VisitLog;
+  onClickLike: (id: number, to: boolean) => void;
 }
 
-const VisitLog = (props: VisitLogProps) => {
+const VisitLogItem = (props: VisitLogItemProps) => {
   const {
+    id,
     createdAt,
     address,
     transactionType,
@@ -23,6 +26,9 @@ const VisitLog = (props: VisitLogProps) => {
     exclusiveArea,
     isFavorite,
   } = props.visitLog;
+  const { onClickLike } = props;
+
+  const hanleClickLike = () => onClickLike(id, !isFavorite);
 
   const formatPrice = () => {
     switch (transactionType) {
@@ -42,9 +48,9 @@ const VisitLog = (props: VisitLogProps) => {
         const formattedMaintenanceCost = maintenanceCost
           ? ` + 관리비 ${maintenanceCost}`
           : '';
-        return `${formatTransactionType(
-          transactionType,
-        )} ${price.toLocaleString()}${formattedMaintenanceCost}`;
+        return `${formatTransactionType(transactionType)} ${(
+          price ?? 0
+        ).toLocaleString()}${formattedMaintenanceCost}`;
       }
     }
   };
@@ -60,7 +66,7 @@ const VisitLog = (props: VisitLogProps) => {
         )}
       </Data>
 
-      <button>
+      <button onClick={hanleClickLike}>
         {isFavorite ? (
           <HeartFilled width={28} height={28} />
         ) : (
@@ -71,7 +77,7 @@ const VisitLog = (props: VisitLogProps) => {
   );
 };
 
-export default VisitLog;
+export default VisitLogItem;
 
 const Wrapper = styled.li`
   display: flex;
