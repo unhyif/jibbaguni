@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
-import UserProfileProvider from '@components/layout/UserProfileProvider';
+import UserProvider from '@components/layout/UserProvider';
 import { RecoilProvider } from '@components/layout/RecoilProvider';
 import '@styles/global.css';
 import { getServerSupabase } from '@utils/supabase';
@@ -24,26 +24,23 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   } = await supabase.auth.getSession();
   const accessToken = session?.access_token ?? null;
 
-  const getUserProfile = async () => {
-    const { data: userProfile } = await supabase
+  const getUser = async () => {
+    const { data: user } = await supabase
       .from('userProfile')
       .select('*')
       .maybeSingle();
-    return userProfile;
+    return user;
   };
-  const userProfile = session ? await getUserProfile() : null;
+  const user = session ? await getUser() : null;
 
   return (
     <html lang="ko">
       <body className={defaultFont.className}>
         <StyledComponentsRegistry>
           <RecoilProvider>
-            <UserProfileProvider
-              accessToken={accessToken}
-              userProfile={userProfile}
-            >
+            <UserProvider user={user} accessToken={accessToken}>
               {children}
-            </UserProfileProvider>
+            </UserProvider>
           </RecoilProvider>
         </StyledComponentsRegistry>
       </body>

@@ -1,3 +1,3 @@
 export const recoilKeys = {
-  userProfile: 'userProfile',
+  user: 'user',
 } as const;

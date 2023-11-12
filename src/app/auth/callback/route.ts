@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { Database } from '~/types/database/database';
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export const GET = async (request: NextRequest) => {
   const requestUrl = new URL(request.url);

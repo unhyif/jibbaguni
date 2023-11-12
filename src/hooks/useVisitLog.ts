@@ -1,12 +1,12 @@
 import { clientSupabase, getCurrentDate } from '@utils/supabase';
 import { useRecoilValue } from 'recoil';
-import { userProfileAtom } from '@recoil/states';
+import { userAtom } from '@recoil/states';
 import { InsertParams, UpdateParams } from '~/types/database/utils';
 
 interface UseVisitLogProps {}
 
 export const useVisitLog = () => {
-  const user = useRecoilValue(userProfileAtom);
+  const user = useRecoilValue(userAtom);
 
   const create = async (
     params: Omit<InsertParams<'visitLog'>, 'userProfileId'>,

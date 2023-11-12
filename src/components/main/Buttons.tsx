@@ -1,12 +1,12 @@
 import { useAuth } from '@hooks/useAuth';
 import { useVisitLog } from '@hooks/useVisitLog';
-import { userProfileAtom } from '@recoil/states';
+import { userAtom } from '@recoil/states';
 import { useRecoilValue } from 'recoil';
 
 interface ButtonsProps {}
 
 const Buttons = (props: ButtonsProps) => {
-  const user = useRecoilValue(userProfileAtom);
+  const user = useRecoilValue(userAtom);
   const { signUp, signIn, signOut } = useAuth();
   const { create, edit, remove } = useVisitLog();
 
