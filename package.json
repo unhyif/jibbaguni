@@ -23,6 +23,7 @@
     "@supabase/auth-helpers-react": "^0.4.2",
     "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.38.4",
+    "axios": "^1.6.1",
     "dayjs": "^1.11.10",
     "next": "14.0.2",
     "react": "latest",

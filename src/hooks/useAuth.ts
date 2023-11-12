@@ -1,4 +1,3 @@
-import { pathnames } from '@constants/pathnames';
 import { clientSupabase } from '@utils/supabase';
 
 interface UseAuthProps {}
@@ -9,7 +8,7 @@ export const useAuth = () => {
       email,
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}${pathnames.authCallback}`,
+        emailRedirectTo: `${window.location.origin}/auth/callback`,
       },
     });
   };
