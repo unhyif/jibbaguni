@@ -3,10 +3,11 @@ import { PropsWithChildren } from 'react';
 import UserProvider from '@components/layout/UserProvider';
 import { RecoilProvider } from '@components/layout/RecoilProvider';
 import '@styles/global.css';
-import { getServerSupabase } from '@utils/supabase';
+import { getSessionInServer } from '@utils/supabase';
 import { cookies } from 'next/headers';
 import localFont from 'next/font/local';
 import StyledComponentsRegistry from '@components/layout/StyledComponentsRegistry';
+import { getUserAPI } from '~/apis/auth';
 
 const defaultFont = localFont({
   src: '../styles/fonts/PretendardVariable.woff2',
@@ -17,21 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: PropsWithChildren) {
-  const supabase = getServerSupabase(cookies());
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const session = await getSessionInServer(cookies());
   const accessToken = session?.access_token ?? null;
 
-  const getUser = async () => {
-    const { data: user } = await supabase
-      .from('userProfile')
-      .select('*')
-      .maybeSingle();
-    return user;
-  };
-  const user = session ? await getUser() : null;
+  const user = session ? await getUserAPI() : null;
 
   return (
     <html lang="ko">

@@ -31,6 +31,14 @@ export const getServerSupabase = (cookies: ReadonlyRequestCookies) =>
     },
   );
 
+export const getSessionInServer = async (cookies: ReadonlyRequestCookies) => {
+  const supabase = getServerSupabase(cookies);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+  return session;
+};
+
 export const getRouteHandlerSupabase = (cookies: ReadonlyRequestCookies) =>
   createRouteHandlerClient<Database>(
     { cookies: () => cookies },
