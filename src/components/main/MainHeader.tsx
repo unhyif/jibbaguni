@@ -2,9 +2,9 @@ import Header from '@components/designSystem/Header';
 import Home from '@assets/svgs/mingcute_home-1-line.svg';
 import Question from '@assets/svgs/ri_question-line.svg';
 import styled from 'styled-components';
-import { Colors } from '@styles/designSystem/Colors';
+import { Colors } from '@styles/designSystem/colors';
 import Link from 'next/link';
-import { Pathnames } from '@constants/Pathnames';
+import { Pathnames } from '@constants/pathnames';
 
 interface MainHeaderProps {}
 

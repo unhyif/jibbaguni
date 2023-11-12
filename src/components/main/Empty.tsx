@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Logo from '@assets/svgs/brand-logo.svg';
-import { Colors } from '@styles/designSystem/Colors';
+import { Colors } from '@styles/designSystem/colors';
 
 interface EmptyProps {}
 

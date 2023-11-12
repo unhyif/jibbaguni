@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { HeaderHeight } from '@styles/constants';
-import { Colors } from '@styles/designSystem/Colors';
+import { Colors } from '@styles/designSystem/colors';
 
 interface HeaderProps {
   title?: string;

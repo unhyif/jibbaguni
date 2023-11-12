@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { TextEllipsis } from '@styles/mixins';
-import { Colors } from '@styles/designSystem/Colors';
+import { Colors } from '@styles/designSystem/colors';
 import HeartUnFilled from '@assets/svgs/ph_heart-light.svg';
 import HeartFilled from '@assets/svgs/ph_heart-fill.svg';
 import dayjs from 'dayjs';
 import { TransactionTypes } from '@constants/enums';
-import { calculate평fromM2, formatTransactionType } from '@utils/visitLog';
-import { VisitLog } from '~/types/visitLog';
+import { calculate평fromM2, formatTransactionType } from '@utils/VisitLog';
+import { VisitLog } from '~/types/VisitLog';
 
 interface VisitLogItemProps {
   visitLog: VisitLog;

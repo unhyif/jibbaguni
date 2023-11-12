@@ -5,16 +5,16 @@ import { HeaderHeight } from '@styles/constants';
 import MainHeader from '@components/main/MainHeader';
 import { useState } from 'react';
 import RoundButton from '@components/designSystem/RoundButton';
-import { Elevations } from '@styles/designSystem/Elevations';
-import { Colors } from '@styles/designSystem/Colors';
+import { Elevations } from '@styles/designSystem/elevations';
+import { Colors } from '@styles/designSystem/colors';
 import Link from 'next/link';
-import { Pathnames } from '@constants/Pathnames';
+import { Pathnames } from '@constants/pathnames';
 import Empty from '@components/main/Empty';
 import VisitLogItem from '@components/main/VisitLogItem';
 import { getCurrentDate } from '@utils/supabase';
 import { TransactionTypes } from '@constants/enums';
 import { useVisitLog } from '@hooks/useVisitLog';
-import { VisitLog } from '~/types/visitLog';
+import { VisitLog } from '~/types/VisitLog';
 
 interface MainProps {
   initialVisitLogs: VisitLog[];

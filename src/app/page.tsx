@@ -4,7 +4,7 @@ import Main from '@components/main';
 import { getMyVisitLogsAPI } from '@apis/visit-logs';
 
 const Home = async () => {
-  const session = getSessionInServer(cookies());
+  const session = await getSessionInServer(cookies());
 
   const visitLogs = session ? await getMyVisitLogsAPI() : [];
 
