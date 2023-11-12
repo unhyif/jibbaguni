@@ -1,4 +1,4 @@
-import API from '~/apis';
+import API from '@apis/index';
 import { User } from '~/types/User';
 
 export const getUserAPI = async () => {
