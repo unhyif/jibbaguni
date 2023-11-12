@@ -1,6 +1,5 @@
 'use client';
 
-import Buttons from '@components/main/Buttons';
 import styled from 'styled-components';
 import { HEADER_HEIGHT } from '@styles/constants';
 import MainHeader from '@components/main/MainHeader';
@@ -13,9 +12,8 @@ import { pathnames } from '@constants/pathnames';
 import Empty from '@components/main/Empty';
 import VisitLogItem from '@components/main/VisitLogItem';
 import { getCurrentDate } from '@utils/supabase';
-import { transactionTypes } from '@constants/schema';
+import { transactionTypes } from '@constants/enums';
 import { useVisitLog } from '@hooks/useVisitLog';
-import { Model } from '~/types/database/utils';
 import { VisitLog } from '~/types/visitLog';
 
 interface MainProps {

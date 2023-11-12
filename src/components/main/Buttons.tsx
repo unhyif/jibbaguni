@@ -1,6 +1,5 @@
 import { useAuth } from '@hooks/useAuth';
 import { useVisitLog } from '@hooks/useVisitLog';
-import { transactionTypes } from '@constants/schema';
 import { userProfileAtom } from '@recoil/states';
 import { useRecoilValue } from 'recoil';
 

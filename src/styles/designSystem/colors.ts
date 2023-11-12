@@ -10,4 +10,4 @@ export const colors = {
   weakGrey: '#EEEEEE',
   lightGrey: '#E4E4E4',
   midGrey: '#C4C4C4',
-};
+} as const;

@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 import { recoilKeys } from '@recoil/keys';
-import { Model } from '~/types/database/utils';
+import { UserProfile } from '~/types/UserProfile';
 
-export const userProfileAtom = atom<Model<'userProfile'> | null>({
+export const userProfileAtom = atom<UserProfile | null>({
   key: recoilKeys.userProfile,
   default: null,
 });

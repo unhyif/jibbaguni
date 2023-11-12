@@ -1,4 +1,4 @@
-import { transactionTypes } from '@constants/schema';
+import { transactionTypes } from '@constants/enums';
 import { ValueOf } from '~/types/utils';
 
 export const formatTransactionType = (

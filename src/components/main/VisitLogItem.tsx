@@ -4,9 +4,8 @@ import { colors } from '@styles/designSystem/colors';
 import HeartUnFilled from '@assets/svgs/ph_heart-light.svg';
 import HeartFilled from '@assets/svgs/ph_heart-fill.svg';
 import dayjs from 'dayjs';
-import { transactionTypes } from '@constants/schema';
+import { transactionTypes } from '@constants/enums';
 import { calculate평fromM2, formatTransactionType } from '@utils/visitLog';
-import { useVisitLog } from '@hooks/useVisitLog';
 import { VisitLog } from '~/types/visitLog';
 
 interface VisitLogItemProps {

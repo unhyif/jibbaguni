@@ -5,11 +5,11 @@ import { useRouter } from 'next/navigation';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
 import { userProfileAtom } from '@recoil/states';
 import { clientSupabase } from '@utils/supabase';
-import { Model } from '~/types/database/utils';
+import { UserProfile } from '~/types/UserProfile';
 
 interface UserProfileProviderProps {
   accessToken: string | null;
-  userProfile: Model<'userProfile'> | null;
+  userProfile: UserProfile | null;
 }
 
 const UserProfileProvider = (

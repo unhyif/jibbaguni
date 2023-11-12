@@ -18,7 +18,7 @@ const RoundButton = (props: PropsWithChildren<RoundButtonProps>) => {
 
 export default RoundButton;
 
-const Wrapper = styled.div<{ backgroundColor: string; fontColor: string }>`
+const Wrapper = styled.div<Omit<RoundButtonProps, 'onClick'>>`
   cursor: pointer;
   background: ${props => props.backgroundColor};
   border-radius: 10rem;

@@ -3,4 +3,4 @@ export const elevations = {
   footer: 1,
   modal: 2,
   toast: 3,
-};
+} as const;
