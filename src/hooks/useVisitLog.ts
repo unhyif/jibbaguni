@@ -32,14 +32,7 @@ export const useVisitLog = () => {
     return editedVisitLog;
   };
 
-  const remove = async (visitLogId: number) => {
-    const removedVisitLog = await clientSupabase
-      .from('visitLog')
-      .delete()
-      .eq('id', visitLogId)
-      .select();
-    return removedVisitLog;
-  };
+  const remove = async (visitLogId: number) => {};
 
   return { create, edit, remove };
 };
