@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import { HEADER_HEIGHT } from '@styles/constants';
-import { colors } from '@styles/designSystem/colors';
+import { HeaderHeight } from '@styles/constants';
+import { Colors } from '@styles/designSystem/Colors';
 
 interface HeaderProps {
   title?: string;
@@ -20,12 +20,12 @@ const Wrapper = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  height: ${HEADER_HEIGHT}rem;
+  height: ${HeaderHeight}rem;
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  background: ${colors.white};
-  border-bottom: 1px solid ${colors.lightGrey};
+  background: ${Colors.white};
+  border-bottom: 1px solid ${Colors.lightGrey};
 `;
 const Title = styled.span`
   position: absolute;

@@ -1,7 +1,7 @@
 import { getPrisma } from '@utils/prisma';
 import { getSessionInRouterHandler } from '@utils/supabase';
 import { cookies } from 'next/headers';
-import { errorStatus } from '@constants/error';
+import { ErrorStatus } from '@constants/error';
 
 const prisma = getPrisma();
 
@@ -19,5 +19,5 @@ export const GET = async () => {
     });
     return res;
   }
-  return Response.json(null, { status: errorStatus.unauthorized });
+  return Response.json(null, { status: ErrorStatus.unauthorized });
 };

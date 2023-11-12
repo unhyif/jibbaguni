@@ -1,15 +1,15 @@
-import { transactionTypes } from '@constants/enums';
+import { TransactionTypes } from '@constants/enums';
 import { ValueOf } from '~/types/utils';
 
 export const formatTransactionType = (
-  transactionType: ValueOf<typeof transactionTypes>,
+  transactionType: ValueOf<typeof TransactionTypes>,
 ) => {
   switch (transactionType) {
-    case transactionTypes.MONTHLY_RENT:
+    case TransactionTypes.MONTHLY_RENT:
       return '월세';
-    case transactionTypes.JEONSE:
+    case TransactionTypes.JEONSE:
       return '전세';
-    case transactionTypes.SALE:
+    case TransactionTypes.SALE:
       return '매매';
   }
 };

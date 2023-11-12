@@ -2,16 +2,16 @@ import Header from '@components/designSystem/Header';
 import Home from '@assets/svgs/mingcute_home-1-line.svg';
 import Question from '@assets/svgs/ri_question-line.svg';
 import styled from 'styled-components';
-import { colors } from '@styles/designSystem/colors';
+import { Colors } from '@styles/designSystem/Colors';
 import Link from 'next/link';
-import { pathnames } from '@constants/pathnames';
+import { Pathnames } from '@constants/Pathnames';
 
 interface MainHeaderProps {}
 
 const MainHeader = (props: MainHeaderProps) => (
   <Header>
     <HeaderContent>
-      <Link href={pathnames.visitLogCreate}>
+      <Link href={Pathnames.visitLogsCreate}>
         <CreateButton>
           <Home />
           <span>기록하기</span>
@@ -37,10 +37,10 @@ const CreateButton = styled.div`
   justify-content: center;
   gap: 0.4rem;
   align-items: center;
-  background: ${colors.primary};
+  background: ${Colors.primary};
   font-size: 1.4rem;
   font-weight: 700;
-  color: ${colors.white};
+  color: ${Colors.white};
   width: 10rem;
   height: 3.6rem;
   border-radius: 0.4rem;

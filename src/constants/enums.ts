@@ -5,14 +5,14 @@ import {
 } from '.prisma/client';
 import { EnumObject } from '~/types/utils';
 
-export const directions: EnumObject<directionEnum> = {
+export const Directions: EnumObject<directionEnum> = {
   EAST: 'EAST',
   WEST: 'WEST',
   SOUTH: 'SOUTH',
   NORTH: 'NORTH',
 };
 
-export const furnitures: EnumObject<furnitureNameEnum> = {
+export const Furnitures: EnumObject<furnitureNameEnum> = {
   AIR_CONDITIONER: 'AIR_CONDITIONER',
   BED: 'BED',
   CLOSET: 'CLOSET',
@@ -27,7 +27,7 @@ export const furnitures: EnumObject<furnitureNameEnum> = {
   WASHING_MACHINE: 'WASHING_MACHINE',
 };
 
-export const transactionTypes: EnumObject<transactionTypeEnum> = {
+export const TransactionTypes: EnumObject<transactionTypeEnum> = {
   MONTHLY_RENT: 'MONTHLY_RENT',
   JEONSE: 'JEONSE',
   SALE: 'SALE',

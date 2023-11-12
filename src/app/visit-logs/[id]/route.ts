@@ -1,6 +1,6 @@
 import { getSessionInRouterHandler } from '@utils/supabase';
 import { cookies } from 'next/headers';
-import { errorStatus } from '@constants/error';
+import { ErrorStatus } from '@constants/error';
 import { getPrisma } from '@utils/prisma';
 
 const prisma = getPrisma();
@@ -18,5 +18,5 @@ export const DELETE = async (
     });
     return res;
   }
-  return Response.json(null, { status: errorStatus.unauthorized });
+  return Response.json(null, { status: ErrorStatus.unauthorized });
 };

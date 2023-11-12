@@ -1,4 +1,4 @@
-export const elevations = {
+export const Elevations = {
   header: 1,
   footer: 1,
   modal: 2,

@@ -1,18 +1,18 @@
 'use client';
 
 import styled from 'styled-components';
-import { HEADER_HEIGHT } from '@styles/constants';
+import { HeaderHeight } from '@styles/constants';
 import MainHeader from '@components/main/MainHeader';
 import { useState } from 'react';
 import RoundButton from '@components/designSystem/RoundButton';
-import { elevations } from '@styles/designSystem/elevations';
-import { colors } from '@styles/designSystem/colors';
+import { Elevations } from '@styles/designSystem/Elevations';
+import { Colors } from '@styles/designSystem/Colors';
 import Link from 'next/link';
-import { pathnames } from '@constants/pathnames';
+import { Pathnames } from '@constants/Pathnames';
 import Empty from '@components/main/Empty';
 import VisitLogItem from '@components/main/VisitLogItem';
 import { getCurrentDate } from '@utils/supabase';
-import { transactionTypes } from '@constants/enums';
+import { TransactionTypes } from '@constants/enums';
 import { useVisitLog } from '@hooks/useVisitLog';
 import { VisitLog } from '~/types/visitLog';
 
@@ -27,7 +27,7 @@ const MOCK_VISIT_LOGS: VisitLog[] = [
         '서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 관악구 봉천동,',
     },
     createdAt: getCurrentDate(),
-    transactionType: transactionTypes.MONTHLY_RENT,
+    transactionType: TransactionTypes.MONTHLY_RENT,
     price: 1000,
     monthly: 50,
     maintenanceCost: 7,
@@ -36,7 +36,7 @@ const MOCK_VISIT_LOGS: VisitLog[] = [
   },
   {
     createdAt: getCurrentDate(),
-    transactionType: transactionTypes.JEONSE,
+    transactionType: TransactionTypes.JEONSE,
     price: 1000,
     exclusiveArea: 16.2,
     isFavorite: false,
@@ -47,7 +47,7 @@ const MOCK_VISIT_LOGS: VisitLog[] = [
         '서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 관악구 봉천동,',
     },
     createdAt: getCurrentDate(),
-    transactionType: transactionTypes.SALE,
+    transactionType: TransactionTypes.SALE,
     price: 20000,
     maintenanceCost: 7,
     exclusiveArea: 34.8,
@@ -92,8 +92,8 @@ const Main = ({ initialVisitLogs }: MainProps) => {
         {/* <Buttons /> */}
       </Body>
       {!!numOfFavoriteVisitLogs && (
-        <Link href={pathnames.visitLogCompare}>
-          <CompareButton backgroundColor={colors.mint} fontColor={colors.white}>
+        <Link href={Pathnames.visitLogsCompare}>
+          <CompareButton backgroundColor={Colors.mint} fontColor={Colors.white}>
             비교하기 ({numOfFavoriteVisitLogs})
           </CompareButton>
         </Link>
@@ -105,12 +105,12 @@ const Main = ({ initialVisitLogs }: MainProps) => {
 export default Main;
 
 const Wrapper = styled.div`
-  padding-top: ${HEADER_HEIGHT}rem;
+  padding-top: ${HeaderHeight}rem;
 `;
 const Body = styled.main`
   background: #fbfbfb;
   padding: 2rem 2rem 4rem 2rem;
-  min-height: calc(100vh - ${HEADER_HEIGHT}rem);
+  min-height: calc(100vh - ${HeaderHeight}rem);
 `;
 const VisitLogList = styled.ul`
   display: flex;
@@ -122,6 +122,6 @@ const CompareButton = styled(RoundButton)`
   left: 50%;
   transform: translateX(-50%);
   bottom: 4rem;
-  z-index: ${elevations.footer};
+  z-index: ${Elevations.footer};
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
 `;

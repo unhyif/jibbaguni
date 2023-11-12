@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HEADER_HEIGHT } from '@styles/constants';
+import { HeaderHeight } from '@styles/constants';
 import Header from '@components/designSystem/Header';
 
 interface VisitLogCreateProps {}
@@ -13,5 +13,5 @@ const VisitLogCreate = (props: VisitLogCreateProps) => (
 export default VisitLogCreate;
 
 const Wrapper = styled.div`
-  padding-top: ${HEADER_HEIGHT}rem;
+  padding-top: ${HeaderHeight}rem;
 `;

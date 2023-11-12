@@ -17,7 +17,7 @@ const Buttons = (props: ButtonsProps) => {
 
   // const handleInsert = () =>
   //   create({
-  //     transactionType: transactionTypes.MONTHLY_RENT,
+  //     transactionType: TransactionTypes.MONTHLY_RENT,
   //     price: 10000,
   //     hasElevator: true,
   //   });

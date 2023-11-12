@@ -1,3 +1,3 @@
-export const recoilKeys = {
+export const RecoilKeys = {
   user: 'user',
 } as const;

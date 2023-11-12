@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { TextEllipsis } from '@styles/mixins';
-import { colors } from '@styles/designSystem/colors';
+import { Colors } from '@styles/designSystem/Colors';
 import HeartUnFilled from '@assets/svgs/ph_heart-light.svg';
 import HeartFilled from '@assets/svgs/ph_heart-fill.svg';
 import dayjs from 'dayjs';
-import { transactionTypes } from '@constants/enums';
+import { TransactionTypes } from '@constants/enums';
 import { calculate평fromM2, formatTransactionType } from '@utils/visitLog';
 import { VisitLog } from '~/types/visitLog';
 
@@ -31,7 +31,7 @@ const VisitLogItem = (props: VisitLogItemProps) => {
 
   const formatPrice = () => {
     switch (transactionType) {
-      case transactionTypes.MONTHLY_RENT: {
+      case TransactionTypes.MONTHLY_RENT: {
         const prices = price ? [price.toLocaleString(), monthly] : [monthly];
         const formattedMaintenanceCost = maintenanceCost
           ? ` + 관리비 ${maintenanceCost}`
@@ -41,8 +41,8 @@ const VisitLogItem = (props: VisitLogItemProps) => {
         )}${formattedMaintenanceCost}`;
       }
 
-      case transactionTypes.JEONSE:
-      case transactionTypes.SALE:
+      case TransactionTypes.JEONSE:
+      case TransactionTypes.SALE:
       default: {
         const formattedMaintenanceCost = maintenanceCost
           ? ` + 관리비 ${maintenanceCost}`
@@ -83,7 +83,7 @@ const Wrapper = styled.li`
   gap: 1.2rem;
   justify-content: space-between;
   align-items: flex-end;
-  background: ${colors.white};
+  background: ${Colors.white};
   padding: 1.2rem 1.6rem;
   border-radius: 1.2rem;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
@@ -106,7 +106,7 @@ const Address = styled.h5`
 const Price = styled.strong`
   font-size: 1.4rem;
   font-weight: 600;
-  color: ${colors.primary};
+  color: ${Colors.primary};
 `;
 const Area = styled.span`
   font-size: 1.2rem;
