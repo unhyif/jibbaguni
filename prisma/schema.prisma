@@ -4,7 +4,7 @@ generator client {
 
 generator json {
   provider  = "prisma-json-types-generator"
-  namespace = "DatabaseJson"
+  namespace = "JsonField"
 }
 
 datasource db {

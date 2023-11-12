@@ -26,12 +26,14 @@ export interface Database {
           {
             foreignKeyName: '_furnitureTovisitLog_A_fkey';
             columns: ['A'];
+            isOneToOne: false;
             referencedRelation: 'furniture';
             referencedColumns: ['id'];
           },
           {
             foreignKeyName: '_furnitureTovisitLog_B_fkey';
             columns: ['B'];
+            isOneToOne: false;
             referencedRelation: 'visitLog';
             referencedColumns: ['id'];
           },
@@ -137,7 +139,7 @@ export interface Database {
           realEstate?: Json | null;
           supplyArea?: number | null;
           transactionType: Database['public']['Enums']['transactionTypeEnum'];
-          updatedAt?: string;
+          updatedAt: string;
           userProfileId: string;
         };
         Update: {
@@ -165,6 +167,7 @@ export interface Database {
           {
             foreignKeyName: 'visitLog_userProfileId_fkey';
             columns: ['userProfileId'];
+            isOneToOne: false;
             referencedRelation: 'userProfile';
             referencedColumns: ['id'];
           },
@@ -190,6 +193,7 @@ export interface Database {
           {
             foreignKeyName: 'visitLogImage_visitLogId_fkey';
             columns: ['visitLogId'];
+            isOneToOne: false;
             referencedRelation: 'visitLog';
             referencedColumns: ['id'];
           },

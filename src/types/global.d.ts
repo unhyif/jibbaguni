@@ -1,5 +1,5 @@
 declare global {
-  namespace DatabaseJson {
+  namespace JsonField {
     interface VisitLogAddress {
       x?: number;
       y?: number;

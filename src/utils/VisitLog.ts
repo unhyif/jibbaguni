@@ -10,7 +10,6 @@ export const formatTransactionType = (
     case transactionTypes.JEONSE:
       return '전세';
     case transactionTypes.SALE:
-    default:
       return '매매';
   }
 };

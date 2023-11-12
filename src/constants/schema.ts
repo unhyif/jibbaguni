@@ -1,20 +1,14 @@
 import { Enum } from '~/types/database/utils';
-import { ObjectWithFixedKeys } from '~/types/utils';
+import { EnumObject } from '~/types/utils';
 
-export const directions: ObjectWithFixedKeys<
-  Enum<'directionEnum'>,
-  Enum<'directionEnum'>
-> = {
+export const directions: EnumObject<Enum<'directionEnum'>> = {
   EAST: 'EAST',
   WEST: 'WEST',
   SOUTH: 'SOUTH',
   NORTH: 'NORTH',
 };
 
-export const furnitures: ObjectWithFixedKeys<
-  Enum<'furnitureNameEnum'>,
-  Enum<'furnitureNameEnum'>
-> = {
+export const furnitures: EnumObject<Enum<'furnitureNameEnum'>> = {
   AIR_CONDITIONER: 'AIR_CONDITIONER',
   BED: 'BED',
   CLOSET: 'CLOSET',
@@ -29,10 +23,7 @@ export const furnitures: ObjectWithFixedKeys<
   WASHING_MACHINE: 'WASHING_MACHINE',
 };
 
-export const transactionTypes: ObjectWithFixedKeys<
-  Enum<'transactionTypeEnum'>,
-  Enum<'transactionTypeEnum'>
-> = {
+export const transactionTypes: EnumObject<Enum<'transactionTypeEnum'>> = {
   MONTHLY_RENT: 'MONTHLY_RENT',
   JEONSE: 'JEONSE',
   SALE: 'SALE',

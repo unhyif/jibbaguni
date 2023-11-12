@@ -32,16 +32,16 @@ export type Database = MergeDeep<
       Tables: {
         visitLog: {
           Row: {
-            address: DatabaseJson.VisitLogAddress | null;
-            realEstate: DatabaseJson.VisitLogRealEstate | null;
+            address: JsonField.VisitLogAddress | null;
+            realEstate: JsonField.VisitLogRealEstate | null;
           };
           Insert: {
-            address?: DatabaseJson.VisitLogAddress;
-            realEstate?: DatabaseJson.VisitLogRealEstate;
+            address?: JsonField.VisitLogAddress;
+            realEstate?: JsonField.VisitLogRealEstate;
           };
           Update: {
-            address?: DatabaseJson.VisitLogAddress;
-            realEstate?: DatabaseJson.VisitLogRealEstate;
+            address?: JsonField.VisitLogAddress;
+            realEstate?: JsonField.VisitLogRealEstate;
           };
         };
       };
