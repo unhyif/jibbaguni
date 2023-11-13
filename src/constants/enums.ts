@@ -2,7 +2,7 @@ import {
   directionEnum,
   furnitureNameEnum,
   transactionTypeEnum,
-} from '.prisma/client';
+} from '@prisma/client';
 import { EnumObject } from '~/types/utils';
 
 export const Directions: EnumObject<directionEnum> = {

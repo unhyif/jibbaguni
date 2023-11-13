@@ -1,3 +1,3 @@
-import { visitLog } from '.prisma/client';
+import { visitLog } from '@prisma/client';
 
 export type VisitLog = visitLog;
