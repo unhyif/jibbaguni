@@ -1,7 +1,9 @@
 import { getSessionInRouterHandler } from '@utils/supabase';
 import { cookies } from 'next/headers';
-import { ErrorStatus } from '@constants/error';
+import { ErrorCodes, ErrorStatus } from '@constants/error';
 import { getPrisma } from '@utils/prisma';
+import { Prisma } from '.prisma/client';
+import PrismaClientKnownRequestError = Prisma.PrismaClientKnownRequestError;
 
 const prisma = getPrisma();
 
@@ -11,12 +13,21 @@ export const DELETE = async (
 ) => {
   const session = await getSessionInRouterHandler(cookies());
   const user = session?.user;
-  if (user) {
-    const { id } = params;
+
+  if (!user) {
+    return Response.json(null, { status: ErrorStatus.unauthorized });
+  }
+  const { id } = params;
+  try {
     const res = await prisma.visitLog.delete({
       where: { userProfileId: user.id, id },
     });
     return res;
+  } catch (e) {
+    if (e instanceof PrismaClientKnownRequestError) {
+      if (e.code === ErrorCodes.notExist) {
+        return Response.json(null, { status: ErrorStatus.notExist });
+      }
+    }
   }
-  return Response.json(null, { status: ErrorStatus.unauthorized });
 };

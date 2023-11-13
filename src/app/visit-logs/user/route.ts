@@ -8,16 +8,17 @@ const prisma = getPrisma();
 export const GET = async () => {
   const session = await getSessionInRouterHandler(cookies());
   const user = session?.user;
-  if (user) {
-    const res = await prisma.visitLog.findMany({
-      where: { userProfileId: user.id },
-      include: {
-        images: true,
-        furnitures: true,
-      },
-      orderBy: { createdAt: 'desc' },
-    });
-    return res;
+
+  if (!user) {
+    return Response.json(null, { status: ErrorStatus.unauthorized });
   }
-  return Response.json(null, { status: ErrorStatus.unauthorized });
+  const res = await prisma.visitLog.findMany({
+    where: { userProfileId: user.id },
+    include: {
+      images: true,
+      furnitures: true,
+    },
+    orderBy: { createdAt: 'desc' },
+  });
+  return res;
 };
