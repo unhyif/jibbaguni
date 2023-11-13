@@ -8,7 +8,7 @@ interface ButtonsProps {}
 const Buttons = (props: ButtonsProps) => {
   const user = useRecoilValue(userAtom);
   const { signUp, signIn, signOut } = useAuth();
-  const { create, edit, remove } = useVisitLog();
+  const { create, update, remove } = useVisitLog();
 
   // TODO: random email
   const handleSignUp = () => signUp('a@naver.com', '123456');
@@ -22,7 +22,7 @@ const Buttons = (props: ButtonsProps) => {
   //     hasElevator: true,
   //   });
   // const handleUpdate = () =>
-  //   edit(2, { price: 20000, supplyArea: 7.5, hasElevator: false });
+  //   update(2, { price: 20000, supplyArea: 7.5, hasElevator: false });
   // const handleRemove = () => remove(2);
 
   return (

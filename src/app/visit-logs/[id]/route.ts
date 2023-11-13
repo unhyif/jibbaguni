@@ -8,7 +8,7 @@ import PrismaClientKnownRequestError = Prisma.PrismaClientKnownRequestError;
 
 const prisma = getPrisma();
 
-export type EditVisitLogAPIArgs = Args<
+export type UpdateVisitLogAPIArgs = Args<
   typeof prisma.visitLog,
   'update'
 >['data'];

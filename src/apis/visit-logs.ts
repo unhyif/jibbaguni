@@ -1,6 +1,6 @@
 import API from '@apis/index';
 import { CreateVisitLogAPIArgs } from '@app/visit-logs/route';
-import { EditVisitLogAPIArgs } from '@app/visit-logs/[id]/route';
+import { UpdateVisitLogAPIArgs } from '@app/visit-logs/[id]/route';
 import { VisitLog } from '~/types/VisitLog';
 
 export const getMyVisitLogsAPI = async () => {
@@ -13,9 +13,9 @@ export const createVisitLogAPI = async (args: CreateVisitLogAPIArgs) => {
   return res.data;
 };
 
-export const editVisitLogAPI = async (
+export const updateVisitLogAPI = async (
   visitLogId: number,
-  args: EditVisitLogAPIArgs,
+  args: UpdateVisitLogAPIArgs,
 ) => {
   const res = await API.patch(`/visit-logs/${visitLogId}`, args);
   return res.data;

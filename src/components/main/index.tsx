@@ -58,9 +58,9 @@ const MOCK_VISIT_LOGS: VisitLog[] = [
 const Main = ({ initialVisitLogs }: MainProps) => {
   const [visitLogs, setVisitLogs] = useState<VisitLog[]>(MOCK_VISIT_LOGS);
 
-  const { edit } = useVisitLog();
+  const { update } = useVisitLog();
   const handleClickVisitLogLike = async (id: number, to: boolean) => {
-    await edit(id, { isFavorite: to });
+    await update(id, { isFavorite: to });
     setVisitLogs(prev =>
       prev.map(visitLog =>
         visitLog.id === id ? { ...visitLog, isFavorite: to } : visitLog,

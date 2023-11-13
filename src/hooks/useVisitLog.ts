@@ -1,18 +1,18 @@
 import { CreateVisitLogAPIArgs } from '@app/visit-logs/route';
-import { EditVisitLogAPIArgs } from '@app/visit-logs/[id]/route';
+import { UpdateVisitLogAPIArgs } from '@app/visit-logs/[id]/route';
 
 interface UseVisitLogProps {}
 
 export const useVisitLog = () => {
   const create = async (args: CreateVisitLogAPIArgs) => {};
 
-  const edit = async (visitLogId: number, args: EditVisitLogAPIArgs) => {};
+  const update = async (visitLogId: number, args: UpdateVisitLogAPIArgs) => {};
 
   const remove = async (visitLogId: number) => {};
 
   return {
     create,
-    edit,
+    update,
     remove,
   };
 };
