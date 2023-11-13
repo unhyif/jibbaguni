@@ -12,6 +12,7 @@ export const GET = async () => {
   if (!user) {
     return Response.json(null, { status: ErrorStatus.unauthorized });
   }
+
   const res = await prisma.visitLog.findMany({
     where: { userProfileId: user.id },
     include: {

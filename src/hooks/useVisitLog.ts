@@ -1,38 +1,18 @@
-import { clientSupabase, getCurrentDate } from '@utils/supabase';
-import { useRecoilValue } from 'recoil';
-import { userAtom } from '@recoil/states';
-import { InsertParams, UpdateParams } from '~/types/database/utils';
+import { CreateVisitLogAPIArgs } from '@app/visit-logs/route';
+import { EditVisitLogAPIArgs } from '@app/visit-logs/[id]/route';
 
 interface UseVisitLogProps {}
 
 export const useVisitLog = () => {
-  const user = useRecoilValue(userAtom);
+  const create = async (args: CreateVisitLogAPIArgs) => {};
 
-  const create = async (
-    params: Omit<InsertParams<'visitLog'>, 'userProfileId'>,
-  ) => {
-    const createdVisitLog = await clientSupabase
-      .from('visitLog')
-      .insert({
-        ...params,
-        userProfileId: user?.id ?? '',
-      })
-      .select()
-      .single();
-    return createdVisitLog;
-  };
-
-  const edit = async (visitLogId: number, params: UpdateParams<'visitLog'>) => {
-    const editedVisitLog = await clientSupabase
-      .from('visitLog')
-      .update({ ...params, updatedAt: getCurrentDate() })
-      .eq('id', visitLogId)
-      .select()
-      .single();
-    return editedVisitLog;
-  };
+  const edit = async (visitLogId: number, args: EditVisitLogAPIArgs) => {};
 
   const remove = async (visitLogId: number) => {};
 
-  return { create, edit, remove };
+  return {
+    create,
+    edit,
+    remove,
+  };
 };

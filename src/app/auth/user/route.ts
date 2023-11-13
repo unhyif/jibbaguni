@@ -8,6 +8,7 @@ const prisma = getPrisma();
 export const GET = async () => {
   const session = await getSessionInRouterHandler(cookies());
   const user = session?.user;
+
   if (user) {
     const res = await prisma.userProfile.findUnique({ where: { id: user.id } });
     return res;

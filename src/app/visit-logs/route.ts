@@ -19,10 +19,11 @@ export const POST = async (req: Request) => {
   if (!user) {
     return Response.json(null, { status: ErrorStatus.unauthorized });
   }
-  const body = await req.json();
+
+  const args = await req.json();
   const res = await prisma.visitLog.create({
     data: {
-      ...body,
+      ...args,
       userProfile: {
         connect: { id: user.id },
       },
