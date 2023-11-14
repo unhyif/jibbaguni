@@ -2,8 +2,7 @@ import { getSessionInRouterHandler } from '@utils/supabase';
 import { cookies } from 'next/headers';
 import { ErrorCodes, ErrorStatus } from '@constants/error';
 import { getPrisma } from '@utils/prisma';
-import { Prisma } from '@prisma/client';
-import PrismaClientKnownRequestError = Prisma.PrismaClientKnownRequestError;
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 const prisma = getPrisma();
 
