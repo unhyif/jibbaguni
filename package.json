@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "husky install",
+    "postinstall": "husky install && prisma generate",
     "migrate": "prisma migrate dev",
     "db-ts": "dotenv -e .env.development -- cross-var supabase gen types typescript --project-id %NEXT_PUBLIC_SUPABASE_PROJECT_ID% > src/types/database/databaseGenerated.d.ts"
   },
