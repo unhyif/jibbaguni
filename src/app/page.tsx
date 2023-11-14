@@ -1,7 +1,7 @@
 import { getSessionInServer } from '@utils/supabase';
 import { cookies } from 'next/headers';
 import Main from '@components/main';
-import { getMyVisitLogsAPI } from '@apis/visit-logs';
+import { getMyVisitLogsAPI } from '@apis/visit-log';
 
 const Home = async () => {
   const session = await getSessionInServer(cookies());

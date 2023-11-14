@@ -1,5 +1,5 @@
 export const Pathnames = {
   main: '/',
-  visitLogsCreate: '/visit-logs/create',
-  visitLogsCompare: '/visit-logs/compare',
+  visitLogCreate: '/visit-log/create',
+  visitLogCompare: '/visit-log/compare',
 } as const;

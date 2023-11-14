@@ -1,4 +1,4 @@
-import { CreateVisitLogAPIArgs, UpdateVisitLogAPIArgs } from '@apis/visit-logs';
+import { CreateVisitLogAPIArgs, UpdateVisitLogAPIArgs } from '@apis/visit-log';
 
 interface UseVisitLogProps {}
 

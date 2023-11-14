@@ -92,7 +92,7 @@ const Main = ({ initialVisitLogs }: MainProps) => {
         {/* <Buttons /> */}
       </Body>
       {!!numOfFavoriteVisitLogs && (
-        <Link href={Pathnames.visitLogsCompare}>
+        <Link href={Pathnames.visitLogCompare}>
           <CompareButton backgroundColor={Colors.mint} fontColor={Colors.white}>
             비교하기 ({numOfFavoriteVisitLogs})
           </CompareButton>

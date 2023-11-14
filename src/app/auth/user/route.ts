@@ -13,6 +13,7 @@ export const GET = async () => {
     return Response.json(null, { status: ErrorStatus.unauthorized });
   }
 
+  // TODO: RLS
   const res = await prisma.userProfile.findUnique({ where: { id: user.id } });
   return Response.json(res);
 };
