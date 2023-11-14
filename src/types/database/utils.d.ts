@@ -1,10 +1,13 @@
-import { Database } from '~/types/database/database';
+import { $Enums, Prisma } from '.prisma/client';
+import { getPrisma } from '@utils/prisma';
+import { Operation } from '@prisma/client/runtime/library';
+import Args = Prisma.Args;
+import ModelName = Prisma.ModelName;
 
-type Tables = Database['public']['Tables'];
-type Enums = Database['public']['Enums'];
+export type Model<M extends ModelName> = Prisma[M];
+export { $Enums as Enums };
 
-export type Model<T extends keyof Tables> = Tables[T]['Row'];
-export type Enum<T extends keyof Enums> = Enums[T];
-
-export type InsertParams<T extends keyof Tables> = Tables[T]['Insert'];
-export type UpdateParams<T extends keyof Tables> = Tables[T]['Update'];
+export type OperationArgs<M extends ModelName, O extends Operation> = Args<
+  ReturnType<typeof getPrisma>[M],
+  O
+>['data'];

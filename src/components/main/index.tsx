@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { Pathnames } from '@constants/pathnames';
 import Empty from '@components/main/Empty';
 import VisitLogItem from '@components/main/VisitLogItem';
-import { getCurrentDate } from '@utils/supabase';
+import { getCurrentDate } from '@utils/date';
 import { TransactionTypes } from '@constants/enums';
 import { useVisitLog } from '@hooks/useVisitLog';
 import { VisitLog } from '~/types/VisitLog';

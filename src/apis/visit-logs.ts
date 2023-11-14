@@ -1,18 +1,19 @@
 import API from '@apis/index';
-import { CreateVisitLogAPIArgs } from '@app/visit-logs/route';
-import { UpdateVisitLogAPIArgs } from '@app/visit-logs/[id]/route';
 import { VisitLog } from '~/types/VisitLog';
+import { OperationArgs } from '~/types/database/utils';
 
 export const getMyVisitLogsAPI = async () => {
   const res = await API.get<VisitLog[]>('/visit-logs/user');
   return res.data;
 };
 
+export type CreateVisitLogAPIArgs = OperationArgs<'visitLog', 'create'>;
 export const createVisitLogAPI = async (args: CreateVisitLogAPIArgs) => {
   const res = await API.post<VisitLog>('/visit-logs', args);
   return res.data;
 };
 
+export type UpdateVisitLogAPIArgs = OperationArgs<'visitLog', 'update'>;
 export const updateVisitLogAPI = async (
   visitLogId: number,
   args: UpdateVisitLogAPIArgs,

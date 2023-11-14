@@ -1,3 +1,3 @@
-import { visitLog } from '@prisma/client';
+import { Model } from '~/types/database/utils';
 
-export type VisitLog = visitLog;
+export type VisitLog = Model<'visitLog'>;

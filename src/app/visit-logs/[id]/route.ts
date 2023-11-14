@@ -3,15 +3,9 @@ import { cookies } from 'next/headers';
 import { ErrorCodes, ErrorStatus } from '@constants/error';
 import { getPrisma } from '@utils/prisma';
 import { Prisma } from '@prisma/client';
-import Args = Prisma.Args;
 import PrismaClientKnownRequestError = Prisma.PrismaClientKnownRequestError;
 
 const prisma = getPrisma();
-
-export type UpdateVisitLogAPIArgs = Args<
-  typeof prisma.visitLog,
-  'update'
->['data'];
 
 export const PATCH = async (
   req: Request,

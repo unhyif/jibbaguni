@@ -2,7 +2,7 @@
 
 import { PropsWithChildren, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useResetRecoilState, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { userAtom } from '@recoil/states';
 import { clientSupabase } from '@utils/supabase';
 import { User } from '~/types/User';
@@ -18,13 +18,10 @@ const UserProvider = (props: PropsWithChildren<UserProviderProps>) => {
   const router = useRouter();
 
   const setUser = useSetRecoilState(userAtom);
-  const resetUser = useResetRecoilState(userAtom);
 
   useEffect(() => {
     if (user) {
       setUser(user);
-    } else {
-      resetUser();
     }
   }, [user]);
 

@@ -1,18 +1,14 @@
-import {
-  directionEnum,
-  furnitureNameEnum,
-  transactionTypeEnum,
-} from '@prisma/client';
 import { EnumObject } from '~/types/utils';
+import { Enums } from '~/types/database/utils';
 
-export const Directions: EnumObject<directionEnum> = {
+export const Directions: EnumObject<Enums.directionEnum> = {
   EAST: 'EAST',
   WEST: 'WEST',
   SOUTH: 'SOUTH',
   NORTH: 'NORTH',
 };
 
-export const Furnitures: EnumObject<furnitureNameEnum> = {
+export const Furnitures: EnumObject<Enums.furnitureNameEnum> = {
   AIR_CONDITIONER: 'AIR_CONDITIONER',
   BED: 'BED',
   CLOSET: 'CLOSET',
@@ -27,7 +23,7 @@ export const Furnitures: EnumObject<furnitureNameEnum> = {
   WASHING_MACHINE: 'WASHING_MACHINE',
 };
 
-export const TransactionTypes: EnumObject<transactionTypeEnum> = {
+export const TransactionTypes: EnumObject<Enums.transactionTypeEnum> = {
   MONTHLY_RENT: 'MONTHLY_RENT',
   JEONSE: 'JEONSE',
   SALE: 'SALE',

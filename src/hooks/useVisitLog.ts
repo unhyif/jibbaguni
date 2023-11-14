@@ -1,5 +1,4 @@
-import { CreateVisitLogAPIArgs } from '@app/visit-logs/route';
-import { UpdateVisitLogAPIArgs } from '@app/visit-logs/[id]/route';
+import { CreateVisitLogAPIArgs, UpdateVisitLogAPIArgs } from '@apis/visit-logs';
 
 interface UseVisitLogProps {}
 

@@ -57,5 +57,3 @@ export const getSessionInRouterHandler = async (
   } = await supabase.auth.getSession();
   return session;
 };
-
-export const getCurrentDate = () => new Date().toISOString();
