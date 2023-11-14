@@ -25,7 +25,7 @@ export const PATCH = async (
       where: { userProfileId: user.id, id },
       data: args,
     });
-    return res;
+    return Response.json(res);
   } catch (e) {
     if (e instanceof PrismaClientKnownRequestError) {
       if (e.code === ErrorCodes.notExist) {
@@ -51,7 +51,7 @@ export const DELETE = async (
     const res = await prisma.visitLog.delete({
       where: { userProfileId: user.id, id },
     });
-    return res;
+    return Response.json(res);
   } catch (e) {
     if (e instanceof PrismaClientKnownRequestError) {
       if (e.code === ErrorCodes.notExist) {

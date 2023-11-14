@@ -14,5 +14,5 @@ export const GET = async () => {
   }
 
   const res = await prisma.userProfile.findUnique({ where: { id: user.id } });
-  return res;
+  return Response.json(res);
 };

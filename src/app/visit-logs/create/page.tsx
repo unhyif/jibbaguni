@@ -1,3 +1,5 @@
+'use client';
+
 import styled from 'styled-components';
 import { HeaderHeight } from '@styles/constants';
 import Header from '@components/designSystem/Header';

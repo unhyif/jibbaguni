@@ -22,5 +22,5 @@ export const POST = async (req: Request) => {
       },
     },
   });
-  return res;
+  return Response.json(res);
 };

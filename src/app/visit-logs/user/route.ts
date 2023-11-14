@@ -21,5 +21,5 @@ export const GET = async () => {
     },
     orderBy: { createdAt: 'desc' },
   });
-  return res;
+  return Response.json(res);
 };
