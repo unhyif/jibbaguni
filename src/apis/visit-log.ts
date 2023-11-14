@@ -26,3 +26,13 @@ export const deleteVisitLogAPI = async (visitLogId: number) => {
   const res = await API.delete(`/visit-log/${visitLogId}`);
   return res.data;
 };
+
+export const updateVisitLogLikeAPI = async (
+  visitLogId: number,
+  to: boolean,
+) => {
+  const res = await API.patch(`/like/visit-log/${visitLogId}`, {
+    isFavorite: to,
+  });
+  return res.data;
+};
