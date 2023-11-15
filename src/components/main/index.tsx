@@ -3,7 +3,6 @@
 import styled from 'styled-components';
 import { HeaderHeight } from '@styles/constants';
 import MainHeader from '@components/main/MainHeader';
-import { useState } from 'react';
 import RoundButton from '@components/designSystem/RoundButton';
 import { Elevations } from '@styles/designSystem/elevations';
 import { Colors } from '@styles/designSystem/colors';
@@ -11,57 +10,22 @@ import Link from 'next/link';
 import { Pathnames } from '@constants/pathnames';
 import Empty from '@components/main/Empty';
 import VisitLogItem from '@components/main/VisitLogItem';
-import { getCurrentDate } from '@utils/date';
-import { TransactionTypes } from '@constants/enums';
-import { useVisitLog } from '@hooks/useVisitLog';
+import { useVisitLogOperation } from '@hooks/useVisitLogOperation';
+import { useVisitLogs } from '@components/main/hooks/useVisitLogs';
 import { VisitLog } from '~/types/VisitLog';
 
 interface MainProps {
   initialVisitLogs: VisitLog[];
 }
 
-const MOCK_VISIT_LOGS: VisitLog[] = [
-  {
-    address: {
-      addressStr:
-        '서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 관악구 봉천동,',
-    },
-    createdAt: getCurrentDate(),
-    transactionType: TransactionTypes.MONTHLY_RENT,
-    price: 1000,
-    monthly: 50,
-    maintenanceCost: 7,
-    exclusiveArea: 21.4,
-    isFavorite: true,
-  },
-  {
-    createdAt: getCurrentDate(),
-    transactionType: TransactionTypes.JEONSE,
-    price: 1000,
-    exclusiveArea: 16.2,
-    isFavorite: false,
-  },
-  {
-    address: {
-      addressStr:
-        '서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 서울특별시 관악구 봉천동, 관악구 봉천동,',
-    },
-    createdAt: getCurrentDate(),
-    transactionType: TransactionTypes.SALE,
-    price: 20000,
-    maintenanceCost: 7,
-    exclusiveArea: 34.8,
-    isFavorite: true,
-  },
-];
-
 const Main = ({ initialVisitLogs }: MainProps) => {
-  const [visitLogs, setVisitLogs] = useState<VisitLog[]>(MOCK_VISIT_LOGS);
+  const { visitLogs, handleVisitLogs } = useVisitLogs(initialVisitLogs);
 
-  const { update } = useVisitLog();
+  const { like } = useVisitLogOperation();
+
   const handleClickVisitLogLike = async (id: number, to: boolean) => {
-    await update(id, { isFavorite: to });
-    setVisitLogs(prev =>
+    await like(id, to);
+    handleVisitLogs(prev =>
       prev.map(visitLog =>
         visitLog.id === id ? { ...visitLog, isFavorite: to } : visitLog,
       ),

@@ -1,5 +1,5 @@
 import { useAuth } from '@hooks/useAuth';
-import { useVisitLog } from '@hooks/useVisitLog';
+import { useVisitLogOperation } from '@hooks/useVisitLogOperation';
 import { userAtom } from '@recoil/states';
 import { useRecoilValue } from 'recoil';
 
@@ -8,7 +8,7 @@ interface ButtonsProps {}
 const Buttons = (props: ButtonsProps) => {
   const user = useRecoilValue(userAtom);
   const { signUp, signIn, signOut } = useAuth();
-  const { create, update, remove } = useVisitLog();
+  const { create, update, remove } = useVisitLogOperation();
 
   // TODO: random email
   const handleSignUp = () => signUp('a@naver.com', '123456');

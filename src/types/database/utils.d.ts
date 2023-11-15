@@ -1,10 +1,13 @@
-import { $Enums, Prisma } from '.prisma/client';
+import { $Enums, Prisma } from '@prisma/client';
 import { getPrisma } from '@utils/prisma';
-import { Operation } from '@prisma/client/runtime/library';
+import { DefaultSelection, Operation } from '@prisma/client/runtime/library';
 import Args = Prisma.Args;
 import ModelName = Prisma.ModelName;
+import TypeMap = Prisma.TypeMap;
 
-export type Model<M extends ModelName> = Prisma[M];
+export type Model<M extends ModelName> = DefaultSelection<
+  TypeMap['model'][M]['payload']
+>;
 export { $Enums as Enums };
 
 export type OperationArgs<M extends ModelName, O extends Operation> = Args<

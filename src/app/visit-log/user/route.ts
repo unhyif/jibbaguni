@@ -17,7 +17,6 @@ export const GET = async () => {
     where: { userProfileId: user.id },
     include: {
       images: true,
-      furnitures: true,
     },
     orderBy: { createdAt: 'desc' },
   });
