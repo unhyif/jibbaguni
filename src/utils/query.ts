@@ -1,4 +1,7 @@
+import { QueryClient } from '@tanstack/react-query';
 import type { DomainQueryKeysType, QueryKeysType } from '~/types/query';
+
+export const getQueryClient = () => new QueryClient();
 
 export const createQueryKeys = <T extends DomainQueryKeysType>(queryKeys: T) =>
   queryKeys;
