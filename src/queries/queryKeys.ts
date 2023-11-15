@@ -2,6 +2,7 @@ import {
   createVisitLogAPI,
   deleteVisitLogAPI,
   getMyVisitLogsAPI,
+  getVisitLogAPI,
   updateVisitLogAPI,
   updateVisitLogLikeAPI,
 } from '@apis/visit-log';
@@ -27,6 +28,10 @@ const visitLogQueryKeys = createQueryKeys({
     queryKey: [],
     queryFn: getMyVisitLogsAPI,
   },
+  getVisitLogAPI: (visitLogId: number) => ({
+    queryKey: [visitLogId],
+    queryFn: () => getVisitLogAPI(visitLogId),
+  }),
   createVisitLogAPI: {
     queryKey: [],
     queryFn: createVisitLogAPI,

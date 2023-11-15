@@ -6,6 +6,7 @@ import HeartFilled from '@assets/svgs/ph_heart-fill.svg';
 import dayjs from 'dayjs';
 import { TransactionTypes } from '@constants/enums';
 import { calculate평fromM2, formatTransactionType } from '@utils/VisitLog';
+import { MouseEventHandler } from 'react';
 import { VisitLog } from '~/types/VisitLog';
 
 interface VisitLogItemProps {
@@ -27,7 +28,10 @@ const VisitLogItem = (props: VisitLogItemProps) => {
   } = props.visitLog;
   const { onClickLike } = props;
 
-  const hanleClickLike = () => onClickLike(id, !isFavorite);
+  const hanleClickLike: MouseEventHandler<HTMLButtonElement> = e => {
+    e.stopPropagation();
+    onClickLike(id, !isFavorite);
+  };
 
   const formatPrice = () => {
     switch (transactionType) {

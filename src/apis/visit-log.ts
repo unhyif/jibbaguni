@@ -7,6 +7,11 @@ export const getMyVisitLogsAPI = async () => {
   return res.data;
 };
 
+export const getVisitLogAPI = async (visitLogId: number) => {
+  const res = await API.get<VisitLog>(`/visit-log/${visitLogId}`);
+  return res.data;
+};
+
 export type CreateVisitLogAPIArgs = OperationArgs<'visitLog', 'create'>;
 export const createVisitLogAPI = async (args: CreateVisitLogAPIArgs) => {
   const res = await API.post<VisitLog>('/visit-log', args);

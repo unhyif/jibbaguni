@@ -43,11 +43,13 @@ const Main = ({ initialVisitLogs }: MainProps) => {
         {visitLogs.length ? (
           <VisitLogList>
             {visitLogs.map(visitLog => (
-              <VisitLogItem
-                key={visitLog.id}
-                visitLog={visitLog}
-                onClickLike={handleClickVisitLogLike}
-              />
+              <Link href={Pathnames.visitLog(visitLog.id)}>
+                <VisitLogItem
+                  key={visitLog.id}
+                  visitLog={visitLog}
+                  onClickLike={handleClickVisitLogLike}
+                />
+              </Link>
             ))}
           </VisitLogList>
         ) : (
