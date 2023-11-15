@@ -52,4 +52,5 @@ export const MOCK_VISIT_LOG = {
   maintenanceCost: 7,
   exclusiveArea: 21.4,
   isFavorite: true,
+  link: 'https://www.naver.com/',
 };
