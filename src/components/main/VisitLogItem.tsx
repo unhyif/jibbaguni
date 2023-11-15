@@ -4,8 +4,7 @@ import { Colors } from '@styles/designSystem/colors';
 import HeartUnFilled from '@assets/svgs/ph_heart-light.svg';
 import HeartFilled from '@assets/svgs/ph_heart-fill.svg';
 import dayjs from 'dayjs';
-import { TransactionTypes } from '@constants/enums';
-import { calculate평fromM2, formatTransactionType } from '@utils/VisitLog';
+import { calculate평fromM2, formatPrice } from '@utils/VisitLog';
 import { MouseEventHandler } from 'react';
 import { VisitLog } from '~/types/VisitLog';
 
@@ -28,34 +27,9 @@ const VisitLogItem = (props: VisitLogItemProps) => {
   } = props.visitLog;
   const { onClickLike } = props;
 
-  const hanleClickLike: MouseEventHandler<HTMLButtonElement> = e => {
+  const handleClickLike: MouseEventHandler<HTMLButtonElement> = e => {
     e.stopPropagation();
     onClickLike(id, !isFavorite);
-  };
-
-  const formatPrice = () => {
-    switch (transactionType) {
-      case TransactionTypes.MONTHLY_RENT: {
-        const prices = price ? [price.toLocaleString(), monthly] : [monthly];
-        const formattedMaintenanceCost = maintenanceCost
-          ? ` + 관리비 ${maintenanceCost}`
-          : '';
-        return `${formatTransactionType(transactionType)} ${prices.join(
-          '/',
-        )}${formattedMaintenanceCost}`;
-      }
-
-      case TransactionTypes.JEONSE:
-      case TransactionTypes.SALE:
-      default: {
-        const formattedMaintenanceCost = maintenanceCost
-          ? ` + 관리비 ${maintenanceCost}`
-          : '';
-        return `${formatTransactionType(transactionType)} ${(
-          price ?? 0
-        ).toLocaleString()}${formattedMaintenanceCost}`;
-      }
-    }
   };
 
   return (
@@ -63,13 +37,15 @@ const VisitLogItem = (props: VisitLogItemProps) => {
       <Data>
         <CreatedAt>{dayjs(createdAt).format('YY.MM.DD')}</CreatedAt>
         {address?.addressStr && <Address>{address.addressStr}</Address>}
-        <Price>{formatPrice()}</Price>
+        <Price>
+          {formatPrice({ transactionType, price, monthly, maintenanceCost })}
+        </Price>
         {exclusiveArea && (
           <Area>전용면적 약 {calculate평fromM2(exclusiveArea)}평</Area>
         )}
       </Data>
 
-      <LikeButton onClick={hanleClickLike}>
+      <LikeButton onClick={handleClickLike}>
         {isFavorite ? (
           <HeartFilled width={28} height={28} />
         ) : (

@@ -8,7 +8,7 @@ interface VisitLogCreateProps {}
 
 const VisitLogCreate = (props: VisitLogCreateProps) => (
   <Wrapper>
-    <Header title="자세히 보기  🔍" />
+    <Header title="기록하기" />
   </Wrapper>
 );
 
