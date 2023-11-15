@@ -18,12 +18,12 @@ export const updateVisitLogAPI = async (
   visitLogId: number,
   args: UpdateVisitLogAPIArgs,
 ) => {
-  const res = await API.patch(`/visit-log/${visitLogId}`, args);
+  const res = await API.patch<VisitLog>(`/visit-log/${visitLogId}`, args);
   return res.data;
 };
 
 export const deleteVisitLogAPI = async (visitLogId: number) => {
-  const res = await API.delete(`/visit-log/${visitLogId}`);
+  const res = await API.delete<VisitLog>(`/visit-log/${visitLogId}`);
   return res.data;
 };
 
@@ -31,7 +31,7 @@ export const updateVisitLogLikeAPI = async (
   visitLogId: number,
   to: boolean,
 ) => {
-  const res = await API.patch(`/like/visit-log/${visitLogId}`, {
+  const res = await API.patch<VisitLog>(`/like/visit-log/${visitLogId}`, {
     isFavorite: to,
   });
   return res.data;

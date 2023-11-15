@@ -65,13 +65,13 @@ const VisitLogItem = (props: VisitLogItemProps) => {
         )}
       </Data>
 
-      <button onClick={hanleClickLike}>
+      <LikeButton onClick={hanleClickLike}>
         {isFavorite ? (
           <HeartFilled width={28} height={28} />
         ) : (
           <HeartUnFilled width={28} height={28} />
         )}
-      </button>
+      </LikeButton>
     </Wrapper>
   );
 };
@@ -110,4 +110,8 @@ const Price = styled.strong`
 `;
 const Area = styled.span`
   font-size: 1.2rem;
+`;
+const LikeButton = styled.button`
+  width: 2.8rem;
+  height: 2.8rem;
 `;

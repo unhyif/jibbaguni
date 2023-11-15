@@ -17,9 +17,9 @@ const MainHeader = (props: MainHeaderProps) => (
           <span>기록하기</span>
         </CreateButton>
       </Link>
-      <button>
+      <QuestionButton>
         <Question />
-      </button>
+      </QuestionButton>
     </HeaderContent>
   </Header>
 );
@@ -48,4 +48,8 @@ const CreateButton = styled.div`
     0 3px 1px -2px rgba(0, 0, 0, 0.2),
     0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
+`;
+const QuestionButton = styled.button`
+  width: 2.4rem;
+  height: 2.4rem;
 `;

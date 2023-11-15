@@ -8,6 +8,7 @@ import { cookies } from 'next/headers';
 import localFont from 'next/font/local';
 import StyledComponentsRegistry from '@components/layout/StyledComponentsRegistry';
 import { getUserAPI } from '@apis/auth';
+import { QueryProvider } from '@components/layout/QueryProvider';
 
 const defaultFont = localFont({
   src: '../styles/fonts/PretendardVariable.woff2',
@@ -26,11 +27,13 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     <html lang="ko">
       <body className={defaultFont.className}>
         <StyledComponentsRegistry>
-          <RecoilProvider>
-            <UserProvider user={user} accessToken={accessToken}>
-              {children}
-            </UserProvider>
-          </RecoilProvider>
+          <QueryProvider>
+            <RecoilProvider>
+              <UserProvider user={user} accessToken={accessToken}>
+                {children}
+              </UserProvider>
+            </RecoilProvider>
+          </QueryProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
