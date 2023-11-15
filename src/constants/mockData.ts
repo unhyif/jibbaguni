@@ -1,9 +1,7 @@
 import { getCurrentDate } from '@utils/date';
 import { TransactionTypes } from '@constants/enums';
-import { VisitLog } from '~/types/VisitLog';
 
-// @ts-ignore
-export const MOCK_VISIT_LOGS: VisitLog[] = [
+export const MOCK_VISIT_LOGS = [
   {
     address: {
       addressStr:
