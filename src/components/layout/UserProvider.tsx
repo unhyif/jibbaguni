@@ -2,9 +2,9 @@
 
 import { PropsWithChildren, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSetRecoilState } from 'recoil';
-import { userAtom } from '@recoil/states';
+import { useSetAtom } from 'jotai';
 import { clientSupabase } from '@utils/supabase';
+import { userAtom } from '~/jotai/states';
 import { User } from '~/types/User';
 
 interface UserProviderProps {
@@ -17,7 +17,7 @@ const UserProvider = (props: PropsWithChildren<UserProviderProps>) => {
 
   const router = useRouter();
 
-  const setUser = useSetRecoilState(userAtom);
+  const setUser = useSetAtom(userAtom);
 
   useEffect(() => {
     if (user) {

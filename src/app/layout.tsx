@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
 import UserProvider from '@components/layout/UserProvider';
-import { RecoilProvider } from '@components/layout/RecoilProvider';
 import '@styles/global.css';
 import { getSessionInServer } from '@utils/supabase';
 import { cookies } from 'next/headers';
@@ -28,11 +27,9 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       <body className={defaultFont.className}>
         <StyledComponentsRegistry>
           <QueryProvider>
-            <RecoilProvider>
-              <UserProvider user={user} accessToken={accessToken}>
-                {children}
-              </UserProvider>
-            </RecoilProvider>
+            <UserProvider user={user} accessToken={accessToken}>
+              {children}
+            </UserProvider>
           </QueryProvider>
         </StyledComponentsRegistry>
       </body>

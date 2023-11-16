@@ -1,12 +1,12 @@
 import { useAuth } from '@hooks/useAuth';
 import { useVisitLogOperation } from '@hooks/useVisitLogOperation';
-import { userAtom } from '@recoil/states';
-import { useRecoilValue } from 'recoil';
+import { useAtomValue } from 'jotai';
+import { userAtom } from '~/jotai/states';
 
 interface ButtonsProps {}
 
 const Buttons = (props: ButtonsProps) => {
-  const user = useRecoilValue(userAtom);
+  const user = useAtomValue(userAtom);
   const { signUp, signIn, signOut } = useAuth();
   const { create, update, remove } = useVisitLogOperation();
 
