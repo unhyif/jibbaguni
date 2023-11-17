@@ -8,7 +8,11 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import { Colors } from '@styles/designSystem/colors';
 import { MOCK_VISIT_LOG } from '@constants/mockData';
-import { formatPrice, formatTransactionType } from '@utils/VisitLog';
+import {
+  formatPrice,
+  formatPriceSummary,
+  formatTransactionType,
+} from '@utils/VisitLog';
 import FormField from '@components/designSystem/FormField';
 import { TransactionTypes } from '@constants/enums';
 import Chip from '@components/designSystem/Chip';
@@ -31,7 +35,12 @@ const VisitLog = (props: VisitLogProps) => {
         <Top>
           <Address>{address?.addressStr}</Address>
           <Price>
-            {formatPrice({ transactionType, price, monthly, maintenanceCost })}
+            {formatPriceSummary({
+              transactionType,
+              price,
+              monthly,
+              maintenanceCost,
+            })}
           </Price>
         </Top>
         <Border />
@@ -56,7 +65,7 @@ const VisitLog = (props: VisitLogProps) => {
               ))}
             </TransactionTypeList>
           </FormField>
-          <FormField label="보증금">
+          <FormField label={formatPrice(transactionType)}>
             <Text>{price.toLocaleString()}만원</Text>
           </FormField>
         </Bottom>

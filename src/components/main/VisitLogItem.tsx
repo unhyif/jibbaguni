@@ -4,7 +4,7 @@ import { Colors } from '@styles/designSystem/colors';
 import HeartUnFilled from '@assets/svgs/ph_heart-light.svg';
 import HeartFilled from '@assets/svgs/ph_heart-fill.svg';
 import dayjs from 'dayjs';
-import { calculate평fromM2, formatPrice } from '@utils/VisitLog';
+import { calculate평fromM2, formatPriceSummary } from '@utils/VisitLog';
 import { MouseEventHandler } from 'react';
 import { VisitLog } from '~/types/VisitLog';
 
@@ -38,7 +38,12 @@ const VisitLogItem = (props: VisitLogItemProps) => {
         <CreatedAt>{dayjs(createdAt).format('YY.MM.DD')}</CreatedAt>
         {address?.addressStr && <Address>{address.addressStr}</Address>}
         <Price>
-          {formatPrice({ transactionType, price, monthly, maintenanceCost })}
+          {formatPriceSummary({
+            transactionType,
+            price,
+            monthly,
+            maintenanceCost,
+          })}
         </Price>
         {exclusiveArea && (
           <Area>전용면적 약 {calculate평fromM2(exclusiveArea)}평</Area>

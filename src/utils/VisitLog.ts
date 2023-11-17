@@ -1,7 +1,7 @@
 import { TransactionTypes } from '@constants/enums';
 import { ValueOf } from '~/types/utils';
 
-export const formatPrice = (args: {
+export const formatPriceSummary = (args: {
   transactionType: ValueOf<typeof TransactionTypes>;
   price: number | null;
   monthly: number | null;
@@ -31,6 +31,18 @@ export const formatPrice = (args: {
         transactionType,
       )} ${price?.toLocaleString()} ${formattedMaintenanceCost}`;
     }
+  }
+};
+
+export const formatPrice = (
+  transactionType: ValueOf<typeof TransactionTypes>,
+) => {
+  switch (transactionType) {
+    case 'MONTHLY_RENT':
+    case 'JEONSE':
+      return '보증금';
+    case 'SALE':
+      return '매매가';
   }
 };
 
