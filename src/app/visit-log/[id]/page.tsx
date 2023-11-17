@@ -8,9 +8,12 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import { Colors } from '@styles/designSystem/colors';
 import { MOCK_VISIT_LOG } from '@constants/mockData';
-import { formatPrice } from '@utils/VisitLog';
+import { formatPrice, formatTransactionType } from '@utils/VisitLog';
 import FormField from '@components/designSystem/FormField';
+import { TransactionTypes } from '@constants/enums';
+import Chip from '@components/designSystem/Chip';
 import { queryKeys } from '~/queries/queryKeys';
+import { ValueOf } from '~/types/utils';
 
 interface VisitLogProps {}
 
@@ -41,6 +44,18 @@ const VisitLog = (props: VisitLogProps) => {
           <FormField label="주소">
             <Text>{address?.addressStr}</Text>
           </FormField>
+          <FormField label="거래 유형">
+            <TransactionTypeList>
+              {Object.keys(TransactionTypes).map(type => (
+                <Chip
+                  label={formatTransactionType(
+                    type as ValueOf<typeof TransactionTypes>,
+                  )}
+                  isActive={type === transactionType}
+                />
+              ))}
+            </TransactionTypeList>
+          </FormField>
           <FormField label="보증금">
             <Text>{price.toLocaleString()}만원</Text>
           </FormField>
@@ -66,6 +81,10 @@ const Top = styled.header`
 const Address = styled.h1`
   font-size: 1.8rem;
   font-weight: 600;
+`;
+const TransactionTypeList = styled.ul`
+  display: flex;
+  gap: 8px;
 `;
 const Price = styled.strong`
   color: ${Colors.primary};
