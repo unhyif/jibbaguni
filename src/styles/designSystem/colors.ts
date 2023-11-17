@@ -9,5 +9,6 @@ export const Colors = {
   pink: '#FF8585',
   weakGrey: '#EEEEEE',
   lightGrey: '#E4E4E4',
-  midGrey: '#C4C4C4',
+  regularGrey: '#C4C4C4',
+  midGrey: '#A5A5A5',
 } as const;

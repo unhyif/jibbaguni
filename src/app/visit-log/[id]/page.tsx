@@ -9,6 +9,7 @@ import { useParams } from 'next/navigation';
 import { Colors } from '@styles/designSystem/colors';
 import { MOCK_VISIT_LOG } from '@constants/mockData';
 import {
+  calculate평fromM2,
   formatPrice,
   formatPriceSummary,
   formatTransactionType,
@@ -25,34 +26,47 @@ const VisitLog = (props: VisitLogProps) => {
   const { id } = useParams();
 
   const { data } = useQuery(queryKeys.visitLog.getVisitLogAPI(Number(id)));
-  const { address, transactionType, price, monthly, maintenanceCost, link } =
-    MOCK_VISIT_LOG ?? {};
+  const {
+    address,
+    transactionType,
+    price,
+    monthly,
+    maintenanceCost,
+    link,
+    supplyArea,
+    exclusiveArea,
+  } = MOCK_VISIT_LOG ?? {};
 
   return (
     <Wrapper>
       <Header title="자세히 보기  🔍" />
+
       <Body>
         <Top>
           <Address>{address?.addressStr}</Address>
-          <Price>
+          <PriceSummary>
             {formatPriceSummary({
               transactionType,
               price,
               monthly,
               maintenanceCost,
             })}
-          </Price>
+          </PriceSummary>
         </Top>
+
         <Border />
+
         <Bottom>
           <FormField label="URL">
             <Link href={link} target="_blank">
               {link}
             </Link>
           </FormField>
+
           <FormField label="주소">
             <Text>{address?.addressStr}</Text>
           </FormField>
+
           <FormField label="거래 유형">
             <TransactionTypeList>
               {Object.keys(TransactionTypes).map(type => (
@@ -65,8 +79,31 @@ const VisitLog = (props: VisitLogProps) => {
               ))}
             </TransactionTypeList>
           </FormField>
+
           <FormField label={formatPrice(transactionType)}>
-            <Text>{price.toLocaleString()}만원</Text>
+            <Text>{price?.toLocaleString()}만원</Text>
+          </FormField>
+
+          <FormField label={'월세'}>
+            <Text>{monthly?.toLocaleString()}만원</Text>
+          </FormField>
+
+          <FormField label={'관리비'}>
+            <Text>{maintenanceCost?.toLocaleString()}만원</Text>
+          </FormField>
+
+          <FormField label={'공급면적'}>
+            <TextWrapper>
+              <Text>{supplyArea}㎡</Text>
+              <SubText>({calculate평fromM2(supplyArea)}평)</SubText>
+            </TextWrapper>
+          </FormField>
+
+          <FormField label={'전용면적'}>
+            <TextWrapper>
+              <Text>{exclusiveArea}㎡</Text>
+              <SubText>({calculate평fromM2(exclusiveArea)}평)</SubText>
+            </TextWrapper>
           </FormField>
         </Bottom>
       </Body>
@@ -95,7 +132,7 @@ const TransactionTypeList = styled.ul`
   display: flex;
   gap: 8px;
 `;
-const Price = styled.strong`
+const PriceSummary = styled.strong`
   color: ${Colors.primary};
   font-size: 2.4rem;
   font-weight: 600;
@@ -112,9 +149,16 @@ const Bottom = styled.section`
   flex-direction: column;
   gap: 2.4rem;
 `;
+const TextWrapper = styled.div`
+  display: flex;
+  gap: 0.8rem;
+`;
 const Text = styled.span`
   font-weight: 500;
   line-height: 2.4rem;
+`;
+const SubText = styled(Text)`
+  color: ${Colors.midGrey};
 `;
 const Link = styled.a`
   color: ${Colors.mint};

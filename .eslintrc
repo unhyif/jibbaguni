@@ -35,7 +35,8 @@
     "consistent-return": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "no-restricted-syntax": 0,
-    "@typescript-eslint/ban-ts-comment": 0
+    "@typescript-eslint/ban-ts-comment": 0,
+    "react/jsx-curly-brace-presence": 0
   },
   "globals": {
     "React": "writable"

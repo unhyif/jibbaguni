@@ -1,5 +1,5 @@
 import { getCurrentDate } from '@utils/date';
-import { TransactionTypes } from '@constants/enums';
+import { Directions, TransactionTypes } from '@constants/enums';
 
 export const MOCK_VISIT_LOGS = [
   {
@@ -50,7 +50,13 @@ export const MOCK_VISIT_LOG = {
   price: 1000,
   monthly: 50,
   maintenanceCost: 7,
+  supplyArea: 28,
   exclusiveArea: 21.4,
   isFavorite: true,
   link: 'https://www.naver.com/',
+  direction: Directions.SOUTH,
+  floor: 3,
+  hasElevator: false,
+  canPark: false,
+  memo: 'Hello',
 };

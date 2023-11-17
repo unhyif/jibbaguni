@@ -39,6 +39,7 @@ const Main = ({ initialVisitLogs }: MainProps) => {
   return (
     <Wrapper>
       <MainHeader />
+
       <Body>
         {visitLogs.length ? (
           <VisitLogList>
@@ -57,6 +58,7 @@ const Main = ({ initialVisitLogs }: MainProps) => {
         )}
         {/* <Buttons /> */}
       </Body>
+
       {!!numOfFavoriteVisitLogs && (
         <Link href={Pathnames.visitLogCompare}>
           <CompareButton backgroundColor={Colors.mint} fontColor={Colors.white}>
