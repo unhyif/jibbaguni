@@ -5,6 +5,8 @@ import { getMyVisitLogsAPI } from '@apis/visit-log';
 import { MOCK_VISIT_LOGS } from '@constants/mockData';
 import { VisitLog } from '~/types/VisitLog';
 
+export const dynamic = 'force-dynamic';
+
 const Home = async () => {
   const session = await getSessionInServer(cookies());
 
