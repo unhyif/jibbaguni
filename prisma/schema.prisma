@@ -29,8 +29,6 @@ model visitLog {
   link            String?             @db.VarChar(255)
   /// [VisitLogAddress]
   address         Json?
-  /// [VisitLogRealEstate]
-  realEstate      Json?
   transactionType transactionTypeEnum
   price           Int?
   monthly         Int?
@@ -38,11 +36,13 @@ model visitLog {
   supplyArea      Float?
   exclusiveArea   Float?
   direction       directionEnum
+  furnitures      furniture[]         @relation("furnitureTovisitLog")
   floor           Int?
   hasElevator     Boolean             @default(false)
   canPark         Boolean             @default(false)
-  furnitures      furniture[]         @relation("furnitureTovisitLog")
   memo            String?             @db.VarChar(255)
+  /// [VisitLogRealEstate]
+  realEstate      Json?
 }
 
 model visitLogImage {
