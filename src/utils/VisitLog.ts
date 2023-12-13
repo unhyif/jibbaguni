@@ -1,4 +1,4 @@
-import { TransactionTypes } from '@constants/enums';
+import { Directions, TransactionTypes } from '@constants/enums';
 import { ValueOf } from '~/types/utils';
 
 export const formatPriceSummary = (args: {
@@ -58,6 +58,25 @@ export const formatTransactionType = (
       return '매매';
   }
 };
+
+export const formatDirection = (direction: ValueOf<typeof Directions>) => {
+  switch (direction) {
+    case Directions.EAST:
+      return '동';
+    case Directions.WEST:
+      return '서';
+    case Directions.SOUTH:
+      return '남';
+    case Directions.NORTH:
+      return '북';
+  }
+};
+
+export const formatHasElevator = (hasElevator: boolean) =>
+  hasElevator ? '있음' : '없음';
+
+export const formatCanPark = (canPark: boolean) =>
+  canPark ? '가능' : '불가능';
 
 export const calculate평fromM2 = (m2: number) =>
   Number((m2 / 3.305785).toFixed(1));

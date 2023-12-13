@@ -10,6 +10,9 @@ import { Colors } from '@styles/designSystem/colors';
 import { MOCK_VISIT_LOG } from '@constants/mockData';
 import {
   calculate평fromM2,
+  formatCanPark,
+  formatDirection,
+  formatHasElevator,
   formatPrice,
   formatPriceSummary,
   formatTransactionType,
@@ -35,6 +38,13 @@ const VisitLog = (props: VisitLogProps) => {
     link,
     supplyArea,
     exclusiveArea,
+    direction,
+    furnitures,
+    floor,
+    hasElevator,
+    canPark,
+    memo,
+    realEstate,
   } = MOCK_VISIT_LOG ?? {};
 
   return (
@@ -43,8 +53,12 @@ const VisitLog = (props: VisitLogProps) => {
 
       <Body>
         <Top>
-          <Address>{address?.addressStr}</Address>
+          <Address>
+            <Emoji>🏠</Emoji>
+            {address?.addressStr}
+          </Address>
           <PriceSummary>
+            <Emoji>💵</Emoji>
             {formatPriceSummary({
               transactionType,
               price,
@@ -68,7 +82,7 @@ const VisitLog = (props: VisitLogProps) => {
           </FormField>
 
           <FormField label="거래 유형">
-            <TransactionTypeList>
+            <Chips>
               {Object.keys(TransactionTypes).map(type => (
                 <Chip
                   label={formatTransactionType(
@@ -77,7 +91,7 @@ const VisitLog = (props: VisitLogProps) => {
                   isActive={type === transactionType}
                 />
               ))}
-            </TransactionTypeList>
+            </Chips>
           </FormField>
 
           <FormField label={formatPrice(transactionType)}>
@@ -105,8 +119,31 @@ const VisitLog = (props: VisitLogProps) => {
               <SubText>({calculate평fromM2(exclusiveArea)}평)</SubText>
             </TextWrapper>
           </FormField>
+
+          <FormField label={'방향'}>
+            <Text>{formatDirection(direction)}향</Text>
+          </FormField>
+
+          <FormField label={'옵션'} />
+
+          <FormField label={'층'}>
+            <Text>{floor}층</Text>
+          </FormField>
+
+          <FormField label={'엘리베이터'}>
+            <Text>{formatHasElevator(hasElevator)}</Text>
+          </FormField>
+
+          <FormField label={'주차'}>
+            <Text>{formatCanPark(canPark)}</Text>
+          </FormField>
+
+          <FormField label={'메모'}>
+            <Text>{memo}</Text>
+          </FormField>
         </Bottom>
       </Body>
+
       <Footer />
     </Wrapper>
   );
@@ -124,13 +161,17 @@ const Top = styled.header`
   flex-direction: column;
   gap: 1.2rem;
 `;
+const Emoji = styled.span`
+  font-size: 2.4rem;
+  margin-right: 1rem;
+`;
 const Address = styled.h1`
   font-size: 1.8rem;
   font-weight: 600;
 `;
-const TransactionTypeList = styled.ul`
+const Chips = styled.ul`
   display: flex;
-  gap: 8px;
+  gap: 0.8rem;
 `;
 const PriceSummary = styled.strong`
   color: ${Colors.primary};

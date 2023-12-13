@@ -54,9 +54,13 @@ export const MOCK_VISIT_LOG = {
   exclusiveArea: 21.4,
   isFavorite: true,
   link: 'https://www.naver.com/',
+  realEstate: {
+    placeName: '관악구호공인중개사',
+  },
   direction: Directions.SOUTH,
   floor: 3,
   hasElevator: false,
   canPark: false,
+  furnitures: [{ name: 'AIR_CONDITIONER' }, { name: 'CLOSET' }],
   memo: 'Hello',
 };
